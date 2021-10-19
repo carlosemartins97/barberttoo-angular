@@ -1,0 +1,42 @@
+@import 'colors';
+@import 'typography';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: $color-branco;
+}
+
+@media (max-width: 997px){
+  html {
+      font-size: 93.75%;
+  }
+}
+@media (max-width: 765px){
+  html {
+      font-size: 87.5%;
+  }
+}
+
+*, button, input {
+  border:0;
+  outline:0;
+  font-family: $font-inter, sans-serif;
+  color: $color-branco;
+}
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  text-transform: uppercase;
+}

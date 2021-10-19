@@ -1,0 +1,46 @@
+@import '../../../../assets/scss/0-base/colors';
+
+.home {
+  padding: 40px 20px;
+  min-height: 100vh;
+  width: 100%;
+  background: $color-dark;
+  
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+
+    img {
+      object-fit: contain;
+      max-width: 240px;
+    }
+
+    @media(max-width: 765px) {
+      img {
+        max-width: 120px;
+      }
+    }
+  }
+
+  &__login {
+    max-width: 480px;
+    width: 100%;
+
+    margin: 40px 0;
+  }
+
+  .all-rights {
+    text-align: center;
+    line-height: 1.5rem;
+  }
+
+  @media(max-width: 765px) {
+    padding: 20px;
+  }
+}
