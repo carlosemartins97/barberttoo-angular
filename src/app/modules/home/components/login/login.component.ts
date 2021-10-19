@@ -9,6 +9,8 @@ import { AuthService } from 'src/app/core/auth/auth.service';
 })
 export class LoginComponent implements OnInit {;
 
+  loader = false;
+
   loginForm = new FormGroup({
     email: new FormControl('', [
       Validators.required,
@@ -26,6 +28,7 @@ export class LoginComponent implements OnInit {;
 
   onSubmit() {
     if(this.loginForm.valid) {
+      this.loader = true;
       this.auth.login(this.loginForm.value);
     }
   }

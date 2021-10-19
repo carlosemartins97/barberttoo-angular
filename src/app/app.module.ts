@@ -6,10 +6,9 @@ import { HomeRoutingModule } from './modules/home/home-routing.module';
 import { HomeModule } from './modules/home/home.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

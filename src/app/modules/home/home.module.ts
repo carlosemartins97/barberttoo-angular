@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/core/auth/auth.service';
+import { LoaderComponent } from 'src/app/shared/components/loader/loader.component';
 
 
 
@@ -12,7 +13,8 @@ import { AuthService } from 'src/app/core/auth/auth.service';
 @NgModule({
   declarations: [
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
