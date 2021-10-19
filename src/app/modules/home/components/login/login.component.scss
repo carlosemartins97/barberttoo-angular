@@ -22,6 +22,16 @@
       padding: 16px;
       font-size: 1rem;
       line-height: 1.25rem;
+      border: 1px solid transparent;
+
+      &.ng-invalid.ng-touched {
+        border-color: $color-red;
+      }
+    }
+
+    .text-error {
+      color: $color-red;
+      font-size: 0.875rem;
     }
   }
   &__password {

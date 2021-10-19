@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HomeRoutingModule } from './modules/home/home-routing.module';
-import { LoginComponent } from './modules/home/components/login/login.component';
 import { HomeModule } from './modules/home/home.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeModule,
     HomeRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
