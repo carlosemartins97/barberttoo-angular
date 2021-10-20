@@ -9,6 +9,11 @@
     <input type="password" id="password" name="password" formControlName="password" aria-label="Senha">
     <span *ngIf="(loginForm.controls.password.invalid && loginForm.controls.password.touched)" class="text-error">Senha obrigatória!</span>
   </div>
+  <div class="login__rememberData">
+    <input type="checkbox" id="rememberData" name="rememberData" formControlName="rememberData" aria-label="lembrar dados">
+    <label class="login__rememberData__label" for="rememberData">Lembrar dados</label>
+  </div>
+
   <div class="login__submit">
     <button>
       <span *ngIf="!loader">Entrar</span> 

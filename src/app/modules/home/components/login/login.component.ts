@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {;
     password: new FormControl('', [
       Validators.required
     ]),
+    rememberData: new FormControl(''),
   })
 
   constructor(private auth: AuthService) { }
@@ -29,7 +30,11 @@ export class LoginComponent implements OnInit {;
   onSubmit() {
     if(this.loginForm.valid) {
       this.loader = true;
-      this.auth.login(this.loginForm.value);
+      if(this.loginForm.controls.rememberData.value === true) {
+        this.auth.login(this.loginForm.value, true);
+      } else {
+        this.auth.login(this.loginForm.value, false);
+      }
     }
   }
 

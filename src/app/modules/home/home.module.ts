@@ -8,6 +8,7 @@ import { LoaderComponent } from 'src/app/shared/components/loader/loader.compone
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { RegisterComponent } from './pages/register/register.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 
@@ -19,6 +20,7 @@ import { RegisterComponent } from './pages/register/register.component';
     LoaderComponent,
     RegisterFormComponent,
     RegisterComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
