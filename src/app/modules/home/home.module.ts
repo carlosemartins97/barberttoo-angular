@@ -9,6 +9,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { HomeRoutingModule } from './home-routing.module';
 import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 
@@ -26,6 +27,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     CommonModule,
     ReactiveFormsModule,
     HomeRoutingModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: []
 })

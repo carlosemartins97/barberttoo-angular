@@ -29,16 +29,14 @@ export class RegisterFormComponent implements OnInit {
     ]),
     phone: new FormControl('', [
       Validators.required,
-      Validators.pattern("^[0-9]*$"),
-      Validators.minLength(10),
-      Validators.maxLength(11),
+      Validators.maxLength(15),
     ]),
     date: new FormControl('', [
       Validators.required
     ]),
     cpf: new FormControl('', [
       Validators.required,
-      Validators.minLength(11)
+      Validators.maxLength(14)
     ]),
   })
 

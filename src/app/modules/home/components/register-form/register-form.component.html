@@ -20,7 +20,7 @@
       name="cpf" 
       formControlName="cpf" 
       aria-label="cpf"
-      maxlength="11"
+      mask="000.000.000-00"
     >
     <span *ngIf="(registerForm.controls.cpf.invalid && registerForm.controls.cpf.touched)" class="text-error">Digite um cpf válido!</span>
   </div>
@@ -33,8 +33,7 @@
       name="phone" 
       formControlName="phone" 
       aria-label="Telefone"
-      minlength="10"
-      maxlength="11"
+      mask="(00) 00000-0000"
     >
     <span *ngIf="(registerForm.controls.phone.invalid && registerForm.controls.phone.touched)" class="text-error">Insira um telefone/celular válido!</span>
   </div>
