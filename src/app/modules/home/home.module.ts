@@ -4,8 +4,10 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from 'src/app/core/auth/auth.service';
 import { LoaderComponent } from 'src/app/shared/components/loader/loader.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { HomeRoutingModule } from './home-routing.module';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 
@@ -15,10 +17,13 @@ import { LoaderComponent } from 'src/app/shared/components/loader/loader.compone
     HomeComponent,
     LoginComponent,
     LoaderComponent,
+    RegisterFormComponent,
+    RegisterComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    HomeRoutingModule,
   ],
   providers: []
 })

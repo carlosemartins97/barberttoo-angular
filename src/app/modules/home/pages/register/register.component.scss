@@ -1,0 +1,74 @@
+@import '../../../../../assets/scss/0-base/colors';
+
+.register {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 20px;
+
+  &__logoContainer {
+    &__logo {
+      max-width: 420px;
+      object-fit: contain;
+    }
+    @media(max-width: 765px) {
+      display: none !important;
+    }
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__header {
+      max-width: 480px;
+      width: 100%;
+      margin-bottom: 24px;
+
+      &__title {
+        font-size: 2rem;
+        letter-spacing: 0.05em;
+        position: relative;
+        padding-bottom: 8px;
+        margin-bottom: 24px;
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0px;
+          width: 150px;
+          height: 4px;
+          background: $color-amarelo;
+        }
+      }
+
+      &__subtitle {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        color: $color-amarelo;
+        font-weight: 600;
+      }
+    }
+
+    &__content {
+      width: 100%;
+      max-width: 480px;
+    }
+  }
+
+  &__form {
+    padding-right: 24px;
+    @media(max-width: 765px) {
+      padding: 0;
+    }
+  }
+  @media(max-width: 765px) {
+    padding: 20px;
+    align-items: unset;
+    justify-content: unset;
+  }
+}

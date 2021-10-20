@@ -1,0 +1,67 @@
+<form class="register" [formGroup]='registerForm' (ngSubmit)="onSubmit()">
+  <div class="register__nome">
+    <label class="register__nome__label" for="nome">Nome completo:</label>
+    <input 
+      type="text" 
+      id="nome" 
+      name="nome" 
+      formControlName="nome" 
+      aria-label="Nome completo"
+      maxlength="50"
+    >
+    <span *ngIf="((registerForm.controls.nome.invalid && registerForm.controls.nome.touched) )" class="text-error">Insira seu nome completo!</span>
+  </div>
+
+  <div class="register__cpf">
+    <label class="register__cpf__label" for="cpf">CPF:</label>
+    <input 
+      type="text" 
+      id="cpf" 
+      name="cpf" 
+      formControlName="cpf" 
+      aria-label="cpf"
+      maxlength="11"
+    >
+    <span *ngIf="(registerForm.controls.cpf.invalid && registerForm.controls.cpf.touched)" class="text-error">Digite um cpf válido!</span>
+  </div>
+
+  <div class="register__phone">
+    <label class="register__phone__label" for="phone">Telefone ou celular:</label>
+    <input 
+      type="text" 
+      id="phone" 
+      name="phone" 
+      formControlName="phone" 
+      aria-label="Telefone"
+      minlength="10"
+      maxlength="11"
+    >
+    <span *ngIf="(registerForm.controls.phone.invalid && registerForm.controls.phone.touched)" class="text-error">Insira um telefone/celular válido!</span>
+  </div>
+
+  <div class="register__date">
+    <label class="register__date__label" for="date">Data de nascimento:</label>
+    <input type="date" id="date" name="date" formControlName="date" aria-label="Data de nascimento">
+    <span *ngIf="(registerForm.controls.date.invalid && registerForm.controls.date.touched)" class="text-error">Insira sua data de nascimento!</span>
+
+  </div>
+
+  <div class="register__email">
+    <label class="register__email__label" for="email">E-mail:</label>
+    <input type="email" id="email" name="email" formControlName="email" aria-label="E-mail" maxlength="150">
+    <span *ngIf="(registerForm.controls.email.invalid && registerForm.controls.email.touched)" class="text-error">Digite um e-mail válido!</span>
+  </div>
+
+  <div class="register__password">
+    <label class="register__password__label" for="password">Senha:</label>
+    <input type="password" id="password" name="password" formControlName="password" aria-label="Senha" maxlength="30">
+    <span *ngIf="(registerForm.controls.password.invalid && registerForm.controls.password.touched)" class="text-error">A senha deve ter entre 6 a 30 caractéres.</span>
+  </div>
+
+  <div class="register__submit">
+    <button>
+      <span *ngIf="!loader">Cadastrar</span> 
+      <app-loader *ngIf="loader"></app-loader>
+    </button>
+  </div>
+</form>

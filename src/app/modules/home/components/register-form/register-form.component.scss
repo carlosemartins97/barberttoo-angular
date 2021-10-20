@@ -1,11 +1,17 @@
 @import '../../../../../assets/scss/0-base/colors';
 
-.login {
+.register {
   max-width: 480px;
   width: 100%;
 
   &__email, 
-  &__password {
+  &__password,
+  &__cpf,
+  &__date,
+  &__phone,
+  &__nome {
+    padding-top: 16px;
+
     &__label {
       font-size: 1rem;
       line-height: 1.5rem;
@@ -24,6 +30,16 @@
       line-height: 1.25rem;
       border: 1px solid transparent;
 
+      //removendo input styles
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+      &[type=number] {
+        -moz-appearance: textfield;
+      }
+
+
       &.ng-invalid.ng-touched {
         border-color: $color-red;
       }
@@ -33,9 +49,6 @@
       color: $color-red;
       font-size: 0.875rem;
     }
-  }
-  &__password {
-    padding-top: 16px;
   }
 
   &__submit {

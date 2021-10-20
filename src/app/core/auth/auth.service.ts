@@ -12,4 +12,8 @@ export class AuthService {
     // this.http.post('url', payload);
     console.log(payload);
   }
+
+  register(payload: {nome: string, email: string, password: string, cpf: string, phone: string, date: string}) {
+    console.log(payload);
+  }
 }
