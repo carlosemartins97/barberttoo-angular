@@ -2,12 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
+interface Auth {
+  token: string;
+  profile: string;
+  username: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
   api = 'https://sistema-barbertoo.herokuapp.com';
+
+  token = '';
 
   constructor(private http: HttpClient, private route: Router) { }
 
@@ -17,14 +25,16 @@ export class AuthService {
       password: payload.password
     }
     console.log(newPayload);
-    this.http.post<any>(`${this.api}/login`, newPayload).subscribe({
+    this.http.post<Auth>(`${this.api}/login`, newPayload).subscribe({
       next: (res) => {
-        console.log('xablau');
-        
+        this.token = res.token;
+        if(save) {
+          //salvar dados
+        }
+        this.route.navigate(["/dashboard"]);
       },
       error: error => {
-        const teste = JSON.stringify(error.error.text);
-        console.log(teste);
+        alert('Erro ao fazer login!')
       }
     })
   }
@@ -52,7 +62,7 @@ export class AuthService {
       cd_Password: payload.password ,
     }
     console.log(newPayload);
-    this.http.post(`${this.api}/cliente/create`, newPayload).subscribe({
+    this.http.post<any>(`${this.api}/cliente/create`, newPayload).subscribe({
       next: (res) => {
         console.log(res);
         this.route.navigate(['/']);
