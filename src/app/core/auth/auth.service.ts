@@ -46,8 +46,6 @@ export class AuthService {
   }
 
   register(payload: {nome: string, email: string, password: string, cpf: string, phone: string, date: string}) {
-    dataAtualFormatada(payload.date);
-    const newPayloadDate = dataAtualFormatada(payload.date);
     const cpfFormatado = formatCpf(payload.cpf);
     const telefoneFormatado = formatPhone(payload.phone);
 
@@ -55,7 +53,7 @@ export class AuthService {
       nm_Cliente: payload.nome,
       ds_Email: payload.email,
       cd_Cpf: cpfFormatado ,
-      dt_BirthDate: newPayloadDate ,
+      dt_BirthDate: payload.date ,
       cd_TelefoneFixo: telefoneFormatado ,
       cd_Celular: telefoneFormatado ,
       cd_Password: payload.password ,

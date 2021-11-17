@@ -14,6 +14,7 @@ import { LoggedLayoutComponent } from './pages/logged-layout/logged-layout.compo
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CardComponent } from './components/card/card.component';
+import { FooterComponent } from 'src/app/core/footer/footer.component';
 
 
 
@@ -30,6 +31,7 @@ import { CardComponent } from './components/card/card.component';
     LoggedLayoutComponent,
     NavbarComponent,
     CardComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,

@@ -29,6 +29,23 @@
       width: 100%;
       margin-bottom: 24px;
 
+      &__back {
+        margin-bottom: 14px;
+        a {
+          display: flex;
+          align-items: center;
+          font-size: 16px;
+          text-transform: uppercase;
+          color: $color-amarelo;
+
+          .backIcon {
+            color: $color-amarelo;
+            font-size: 12px;
+            margin-right: 4px;
+          }
+        }
+      }
+
       &__title {
         font-size: 2rem;
         letter-spacing: 0.05em;
