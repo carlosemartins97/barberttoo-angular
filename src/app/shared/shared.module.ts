@@ -9,5 +9,5 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule
   ]
-})
+
 export class SharedModule { }

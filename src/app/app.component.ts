@@ -20,4 +20,5 @@ export class AppComponent implements OnInit {
       this.route.navigate(['/']);
     }
   }
+  
 }

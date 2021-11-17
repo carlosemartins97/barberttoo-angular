@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/auth/auth.service';
+import { TitleService } from 'src/app/core/services/title.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -9,9 +9,13 @@ import { AuthService } from 'src/app/core/auth/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private auth: AuthService, private route: Router) { }
+  constructor(private titleService: TitleService) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Agendamentos');
   }
+
+
+  
 
 }
