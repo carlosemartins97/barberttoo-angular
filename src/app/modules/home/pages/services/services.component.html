@@ -1,0 +1,21 @@
+<main class="services">
+  <div class="services__header">
+    <h1 class="services__header__title">
+      Serviços
+    </h1>
+
+    <a *ngIf="role === 'ROLE_ADM'" class="services__header__btn" routerLink="/app/services/create">novo serviço</a>
+  </div>
+
+  <div class="loader" *ngIf="isLoading">
+    <app-loader></app-loader>
+  </div>
+
+  <div class="services__body" *ngIf="!isLoading">
+    <app-card-service
+      *ngFor="let serv of servicos; let i = index" 
+      [servico]="serv"></app-card-service>
+  </div>
+
+  <!-- <button (click)="onCreateService()">teste</button> -->
+</main>

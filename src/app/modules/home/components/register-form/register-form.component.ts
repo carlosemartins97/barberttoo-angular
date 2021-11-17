@@ -53,7 +53,6 @@ export class RegisterFormComponent implements OnInit {
     } else {
       alert('Preencha os campos do formulário corretamente!');
     }
-    this.loader = false;
   }
 
 }

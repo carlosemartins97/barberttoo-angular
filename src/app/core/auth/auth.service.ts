@@ -18,6 +18,7 @@ export class AuthService {
   api = 'https://sistema-barbertoo.herokuapp.com';
 
   token: string | null;
+  profile: string;
 
   constructor(
     private http: HttpClient, private route: Router,
@@ -29,10 +30,11 @@ export class AuthService {
       login: payload.email,
       password: payload.password
     }
-    console.log(newPayload);
     this.http.post<Auth>(`${this.api}/login`, newPayload).subscribe({
       next: (res) => {
         this.token = res.token;
+        this.profile = res.profile;
+        console.log(this.profile);
         sessionStorage.setItem('jwtLogin', JSON.stringify(res));
         // if(save) {
         //   this.cookieService.set('jwtLogin', JSON.stringify(res));

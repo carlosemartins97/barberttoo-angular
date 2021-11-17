@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
+import { faClipboardList, faWrench } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/core/auth/auth.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/core/auth/auth.service';
 export class NavbarComponent implements OnInit {
 
   faClipboardList = faClipboardList;
+  faWrench = faWrench;
 
   constructor(private auth: AuthService) { }
 

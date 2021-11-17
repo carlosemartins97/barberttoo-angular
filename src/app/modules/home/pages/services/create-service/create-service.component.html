@@ -1,0 +1,32 @@
+<main class="createService">
+  <div class="createService__header">
+    <h1 class="createService__header__title">Registrar novo serviço</h1>
+  </div>
+
+  <form [formGroup]='serviceForm' (ngSubmit)="onSubmit()">
+    <div class="createService__name">
+      <label class="createService__name__label" for="name">Nome do serviço:</label>
+      <input type="text" id="name" name="name" formControlName="name" aria-label="Nome">
+      <!-- <span *ngIf="(loginForm.controls.email.invalid && loginForm.controls.email.touched)" class="text-error">Insira um email válido!</span> -->
+    </div>
+
+    <div class="createService__descricao">
+      <label class="createService__descricao__label" for="descricao">Descrição:</label>
+      <input type="text" id="descricao" name="descricao" formControlName="descricao" aria-label="Descrição">
+      <!-- <span *ngIf="(loginForm.controls.email.invalid && loginForm.controls.email.touched)" class="text-error">Insira um email válido!</span> -->
+    </div>
+
+    <div class="createService__price">
+      <label class="createService__price__label" for="price">Preço:</label>
+      <input type="number" id="price" name="price" formControlName="price" aria-label="Preço">
+      <!-- <span *ngIf="(loginForm.controls.email.invalid && loginForm.controls.email.touched)" class="text-error">Insira um email válido!</span> -->
+    </div>
+
+    <div class="createService__submit">
+      <button>
+        <span *ngIf="!loader">Cadastrar</span> 
+        <app-loader *ngIf="loader"></app-loader>
+      </button>
+    </div>
+  </form>
+</main>

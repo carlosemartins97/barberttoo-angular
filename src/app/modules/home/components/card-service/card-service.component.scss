@@ -1,0 +1,47 @@
+@import '../../../../../assets/scss/0-base/colors';
+
+.card {
+  background: $color-cinza-claro;
+  border-radius: 4px;
+  padding: 16px;
+  width: 100%;
+  
+  &__header {
+    position: relative;
+    &__title, &__subtitle, &__price {
+      color: $color-dark;
+      line-height: 24px;
+    }
+
+    &__price {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      background: rgb(172, 61, 61);
+      border-radius: 50%;
+      padding: 3px;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__body {
+    margin-top: 12px;
+    &__btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $color-info;
+      padding: 10px;
+      border-radius: 4px;
+    }
+  }
+}

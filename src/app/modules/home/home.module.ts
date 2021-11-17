@@ -15,6 +15,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CardComponent } from './components/card/card.component';
 import { FooterComponent } from 'src/app/core/footer/footer.component';
+import { ServicesComponent } from './pages/services/services.component';
+import { CardServiceComponent } from './components/card-service/card-service.component';
+import { ServicesService } from 'src/app/core/services/services.service';
+import { CreateServiceComponent } from './pages/services/create-service/create-service.component';
 
 
 
@@ -31,7 +35,10 @@ import { FooterComponent } from 'src/app/core/footer/footer.component';
     LoggedLayoutComponent,
     NavbarComponent,
     CardComponent,
-    FooterComponent
+    FooterComponent,
+    ServicesComponent,
+    CardServiceComponent,
+    CreateServiceComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +47,7 @@ import { FooterComponent } from 'src/app/core/footer/footer.component';
     NgxMaskModule.forRoot(),
     FontAwesomeModule
   ],
-  providers: []
+  providers: [
+  ]
 })
 export class HomeModule { }
