@@ -5,12 +5,18 @@
   border-radius: 4px;
   padding: 16px;
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between ;
   
   &__header {
     position: relative;
+    height: 100%;
     &__title, &__subtitle, &__price {
       color: $color-dark;
       line-height: 24px;
+      margin-bottom: 8px;
     }
 
     &__price {

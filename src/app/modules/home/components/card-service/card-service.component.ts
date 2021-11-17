@@ -13,7 +13,7 @@ export class CardServiceComponent implements OnInit {
 
   @Input() servico: CrudSerivce;
 
-  constructor(private service: ServicesService) { }
+  constructor(public service: ServicesService) { }
 
   ngOnInit(): void {
   }
