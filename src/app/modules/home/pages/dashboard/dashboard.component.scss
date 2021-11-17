@@ -1,0 +1,64 @@
+@import '../../../../../assets/scss/0-base/colors';
+.container {
+  margin-top: 24px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    &__title {
+      position: relative;
+      padding-bottom: 10px;
+      &::after {
+        content: '';
+        left: 0;
+        bottom: 0;
+        position: absolute;
+        width: 100px;
+        height: 4px;
+        background: $color-amarelo;
+      }
+    }
+
+    &__novoAgd {
+      background: $color-info;
+      padding: 8px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    @media(max-width: 450px) {
+      flex-direction: column;
+      &__title {
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        &::after {
+          left: unset;
+        }
+      }
+      &__novoAgd {
+        margin-top: 32px;
+      } 
+    }
+  }
+
+  &__cards {
+    margin-top: 48px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    @media(max-width: 992px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media(max-width: 450px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media(max-width: 380px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+  }
+}

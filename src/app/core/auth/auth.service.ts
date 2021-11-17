@@ -17,7 +17,7 @@ export class AuthService {
 
   api = 'https://sistema-barbertoo.herokuapp.com';
 
-  token: string;
+  token: string | null;
 
   constructor(
     private http: HttpClient, private route: Router,
@@ -37,7 +37,7 @@ export class AuthService {
         // if(save) {
         //   this.cookieService.set('jwtLogin', JSON.stringify(res));
         // }
-        this.route.navigate(["/dashboard"]);
+        this.route.navigate(["/app"]);
       },
       error: error => {
         alert('Erro ao fazer login!')
@@ -70,5 +70,11 @@ export class AuthService {
         console.log(error);
       }
     })
+  }
+
+  logout() {
+    this.token = null;
+    sessionStorage.removeItem('jwtLogin');
+    this.route.navigate(['/']);
   }
 }

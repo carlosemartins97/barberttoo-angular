@@ -1,0 +1,11 @@
+<nav>
+  <ul>
+    <li>
+      <a routerLink="['app/dashboard']"><fa-icon [icon]="faClipboardList" class="navIcon" aria-hidden="true"></fa-icon> agendamentos</a>
+    </li>
+  </ul>
+  <div class="logout">
+    <p class="logout__msg">Olá, <span class="logout__msg__name">Carlos</span>!</p>
+    <button type="button" (click)="onLogout()">Sair</button>
+  </div>
+</nav>

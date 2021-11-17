@@ -1,0 +1,60 @@
+@import '../../../../../assets/scss/0-base/colors';
+
+a {
+  width: 100%;
+  display: block;
+  .card {
+    width: 100%;
+    background: $color-cinza-claro;
+    border: 3px solid $color-cinza-claro;
+    padding: 16px;
+    border-radius: 4px;
+    transition: all 0.1s;
+  
+    p, h2 {
+      color: $color-preto;
+    }
+  
+    &:hover {
+      border-color: $color-amarelo;
+    }
+  
+    &__header {
+      &__title {
+        position: relative;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        &::after {
+          content: '';
+          width: 50px;
+          height: 1px;
+          background: $color-preto;
+          left: 0;
+          bottom: 0;
+          position: absolute;
+        }
+      }
+    }
+  
+    &__body {
+      margin-top: 24px;
+      &__content {
+        display: flex;
+        align-items: center;
+        &__data {
+          width: 30%;
+          p {
+            font-weight: bold;
+            font-size: 24px;
+          }
+        }
+        &__info {
+          strong {
+            color: $color-preto;
+            
+          }
+        }
+      }
+    }
+  }
+}
