@@ -1,0 +1,22 @@
+<main class="atendentes">
+  <div class="atendentes__header">
+    <h1 class="atendentes__header__title">
+      Serviços
+    </h1>
+
+    <!-- <a *ngIf="role === 'ROLE_ADM'" class="atendentes__header__btn" routerLink="/app/atendentes/create">novo serviço</a> -->
+  </div>
+
+  <div class="loader" *ngIf="isLoading">
+    <app-loader></app-loader>
+  </div>
+
+  <div class="atendentes__body" *ngIf="!isLoading">
+    <app-card-atendentes></app-card-atendentes>
+    <app-card-atendentes></app-card-atendentes>
+    <app-card-atendentes></app-card-atendentes>
+    <app-card-atendentes></app-card-atendentes>
+  </div>
+
+  <!-- <button (click)="onCreateService()">teste</button> -->
+</main>

@@ -10,12 +10,15 @@ import { CrudSerivce, ServicesService } from 'src/app/core/services/services.ser
 export class CardServiceComponent implements OnInit {
 
   faTrash = faTrash;
-
+  
   @Input() servico: CrudSerivce;
 
-  constructor(public service: ServicesService) { }
+  link: string;
 
+  constructor(public service: ServicesService) { }
+  
   ngOnInit(): void {
+    this.link = `../agendamentos/create`;
   }
 
   onDelete(id: number) {

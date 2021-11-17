@@ -1,0 +1,44 @@
+<main class="createAgendamento">
+  <div class="createAgendamento__header">
+    <h1 class="createAgendamento__header__title">Novo agendamento</h1>
+  </div>
+
+  <form [formGroup]='agendamentoForm' (ngSubmit)="onSubmit()">
+    <div class="createAgendamento__service formgroup">
+      <label class="createAgendamento__service__label" for="service">Serviço:</label>
+      <select name="service" id="service" formControlName="service">
+        <option *ngFor="let serv of servicos; let i = index" value="{{serv.nm_servico}}">{{serv.nm_servico}}</option>
+      </select>
+      <!-- <span *ngIf="(loginForm.controls.email.invalid && loginForm.controls.email.touched)" class="text-error">Insira um email válido!</span> -->
+    </div>
+
+    <div class="createAgendamento__funcionario formgroup">
+      <label class="createAgendamento__funcionario__label" for="funcionario">Atendente:</label>
+      <select name="funcionario" id="funcionario" formControlName="funcionario">
+        <option value="Ronaldo">Ronaldo</option>
+        <option value="José">José</option>
+        <option value="Túlio">Túlio</option>
+      </select>
+      <!-- <span *ngIf="(loginForm.controls.email.invalid && loginForm.controls.email.touched)" class="text-error">Insira um email válido!</span> -->
+    </div>
+
+    <div class="createAgendamento__date formgroup">
+      <label class="createAgendamento__date__label" for="date">Data:</label>
+      <input type="date" id="date" name="date" formControlName="date" aria-label="Data">
+      <!-- <span *ngIf="(loginForm.controls.email.invalid && loginForm.controls.email.touched)" class="text-error">Insira um email válido!</span> -->
+    </div>
+
+    <div class="createAgendamento__hora formgroup">
+      <label class="createAgendamento__hora__label" for="hora">Horário:</label>
+      <input type="time" id="hora" name="hora" formControlName="hora" aria-label="Horário">
+      <!-- <span *ngIf="(loginForm.controls.email.invalid && loginForm.controls.email.touched)" class="text-error">Insira um email válido!</span> -->
+    </div>
+
+    <div class="submit">
+      <button>
+        <span *ngIf="!loader">Cadastrar</span> 
+        <app-loader *ngIf="loader"></app-loader>
+      </button>
+    </div>
+  </form>
+</main>

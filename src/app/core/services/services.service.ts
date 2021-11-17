@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 
 export interface CrudSerivce {
@@ -17,7 +18,7 @@ export class ServicesService {
   token: string;
   role: string;
 
-  constructor(private http: HttpClient, private auth: AuthService) {
+  constructor(private http: HttpClient, private auth: AuthService, private route: Router) {
     var dataToken = sessionStorage.getItem('jwtLogin');
     dataToken ? this.token = JSON.parse(dataToken).token : null;
     dataToken ? this.role = JSON.parse(dataToken).profile : null;
@@ -49,7 +50,7 @@ export class ServicesService {
       }
     }).subscribe({
       next: res => {
-        console.log('criado');
+        this.route.navigate(['/app/services']);
       }, error: error => {
         console.log(error);
       }

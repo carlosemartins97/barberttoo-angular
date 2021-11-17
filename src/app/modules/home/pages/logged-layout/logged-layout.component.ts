@@ -13,7 +13,7 @@ export class LoggedLayoutComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.route.url === '/app') {
-      this.route.navigate(['app/dashboard']);
+      this.route.navigate(['app/agendamentos']);
     }
   }
 
