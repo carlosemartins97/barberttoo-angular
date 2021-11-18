@@ -36,4 +36,16 @@ export class AtendentesComponent implements OnInit {
     })
   }
 
+  onClickedDelete() {
+    this.atendenteService.getAtendentes().subscribe({
+      next: res => {
+        this.atendentes = res;
+        this.isLoading = false;
+      }, error: error => {
+        console.log(error);
+        this.isLoading = false;
+      }
+    })
+  }
+
 }

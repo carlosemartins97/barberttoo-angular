@@ -23,6 +23,7 @@ import { CreateAgendamentoComponent } from './pages/dashboard/create-agendamento
 import { AtendentesComponent } from './pages/atendentes/atendentes.component';
 import { CardAtendentesComponent } from './components/card-atendentes/card-atendentes.component';
 import { CreateAtendenteComponent } from './pages/atendentes/create-atendente/create-atendente.component';
+import { DetailsAgendamentoComponent } from './pages/dashboard/details-agendamento/details-agendamento.component';
 
 
 
@@ -46,7 +47,8 @@ import { CreateAtendenteComponent } from './pages/atendentes/create-atendente/cr
     CreateAgendamentoComponent,
     AtendentesComponent,
     CardAtendentesComponent,
-    CreateAtendenteComponent
+    CreateAtendenteComponent,
+    DetailsAgendamentoComponent
   ],
   imports: [
     CommonModule,

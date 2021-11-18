@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/core/auth/auth.service';
+import { AtendenteService } from 'src/app/core/services/atendente.service';
 import { ServicesService } from 'src/app/core/services/services.service';
 
 export interface AtendenteInterface {
@@ -26,16 +27,29 @@ export interface AtendenteInterface {
 export class CardAtendentesComponent implements OnInit {
 
   @Input() atendente: AtendenteInterface;
+  @Output() atendenteDeleted = new EventEmitter<boolean>();
 
   faTrash = faTrash;
 
   role: string;
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private atendenteService: AtendenteService) { }
 
   ngOnInit(): void {
     this.role = this.auth.getUserInfo().profile;
     console.log(this.role);
+  }
+
+  onDelete(id: number) {
+    this.atendenteDeleted.emit(true);
+    this.atendenteService.deleteAtendente(id).subscribe({
+      next: res => {
+        console.log(res);
+        this.atendenteDeleted.emit(false);
+      }, error: error => {
+        console.log(error);
+      }
+    })
   }
 
 }

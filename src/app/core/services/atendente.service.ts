@@ -29,6 +29,14 @@ export class AtendenteService {
         }
       });
     }
-    
+  }
+
+  deleteAtendente(id: number) {
+    const token = this.auth.getUserInfo().token;
+    return this.http.delete<any>(`${this.api}/funcionario/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
   }
 }

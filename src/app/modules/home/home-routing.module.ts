@@ -10,6 +10,7 @@ import { CreateServiceComponent } from './pages/services/create-service/create-s
 import { CreateAgendamentoComponent } from './pages/dashboard/create-agendamento/create-agendamento.component';
 import { AtendentesComponent } from './pages/atendentes/atendentes.component';
 import { CreateAtendenteComponent } from './pages/atendentes/create-atendente/create-atendente.component';
+import { DetailsAgendamentoComponent } from './pages/dashboard/details-agendamento/details-agendamento.component';
 
 const appRoutes = [
   {path: '', component: HomeComponent, preMatch: 'full'},
@@ -17,6 +18,7 @@ const appRoutes = [
   {path: 'app', component: LoggedLayoutComponent, children: [
     {path: 'agendamentos', component: DashboardComponent},
     {path: 'agendamentos/create', component: CreateAgendamentoComponent},
+    {path: 'agendamento/:id', component: DetailsAgendamentoComponent},
     {path: 'services', component: ServicesComponent},
     {path: 'services/create', component: CreateServiceComponent},
     {path: 'atendente', component: AtendentesComponent},
