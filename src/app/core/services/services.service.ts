@@ -17,7 +17,6 @@ export class ServicesService {
 
   
   constructor(private http: HttpClient, private auth: AuthService, private route: Router) {
-    console.log('construido')
   }
 
 

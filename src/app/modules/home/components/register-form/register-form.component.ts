@@ -99,7 +99,6 @@ export class RegisterFormComponent implements OnInit {
     this.http.get<{sigla: string, nome: string}[]>(apiEstados).subscribe({
       next: res => {
         this.estados = res.sort((a, b) => a.nome.localeCompare(b.nome));
-        console.log(this.estados);
       },
       error: error => {
         console.log(error);
@@ -110,7 +109,6 @@ export class RegisterFormComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if(this.mode === 'atendente') {
-      console.log(this.registerAtendForm.value);
       if(this.registerAtendForm.valid) {
         this.loader = true;
         this.auth.register(this.registerAtendForm.value, this.mode);
@@ -119,7 +117,6 @@ export class RegisterFormComponent implements OnInit {
         this.loader = false;
       }
     } else {
-      console.log(this.registerForm.value);
       if(this.registerForm.valid) {
         this.loader = true;
         this.auth.register(this.registerForm.value, this.mode);

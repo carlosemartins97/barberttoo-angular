@@ -67,7 +67,6 @@ export class AuthService {
     const telefoneFormatado = formatPhone(payload.phone);
 
     if(mode === 'atendente') {
-      console.log(payload.cep![8]);
       const cepFormatado = formatCep(payload.cep!);
       const newPayload = {
         nm_Funcionario: payload.nome,

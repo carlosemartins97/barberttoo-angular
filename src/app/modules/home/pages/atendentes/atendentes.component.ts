@@ -22,7 +22,6 @@ export class AtendentesComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.setTitle('Atendentes | Barberttoo');
     this.role = this.auth.getUserInfo().profile;
-    console.log(this.role);
     
     this.isLoading = true;
     this.atendenteService.getAtendentes().subscribe({

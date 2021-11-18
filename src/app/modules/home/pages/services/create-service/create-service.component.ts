@@ -39,7 +39,6 @@ export class CreateServiceComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.serviceForm.value);
     if(this.serviceForm.valid) {
       this.loader = true;
       this.service.createService(this.serviceForm.value);
