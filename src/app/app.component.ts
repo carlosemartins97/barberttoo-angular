@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from './core/auth/auth.service';
+import { ServicesService } from './core/services/services.service';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +15,11 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     //validando se existe um token salvo e redirecionando pro login
     const jwt = sessionStorage.getItem('jwtLogin');
-    // if (this.auth.token || jwt) {
-    //   this.route.navigate(['app']);
-    // } else if(!(location.pathname === '/register') && !(location.pathname === '/')) {
-    //   this.route.navigate(['/']);
-    // }
+    if (this.auth.token || jwt) {
+      this.route.navigate(['app']);
+    } else if(!(location.pathname === '/register') && !(location.pathname === '/')) {
+      this.route.navigate(['/']);
+    }
   }
   
 }

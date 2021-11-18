@@ -7,7 +7,7 @@
     <div class="createAgendamento__service formgroup">
       <label class="createAgendamento__service__label" for="service">Serviço:</label>
       <select name="service" id="service" formControlName="service">
-        <option *ngFor="let serv of servicos; let i = index" value="{{serv.nm_servico}}">{{serv.nm_servico}}</option>
+        <option *ngFor="let serv of servicos; let i = index" value="{{serv.id}}">{{serv.nm_servico}}</option>
       </select>
       <!-- <span *ngIf="(loginForm.controls.email.invalid && loginForm.controls.email.touched)" class="text-error">Insira um email válido!</span> -->
     </div>
@@ -15,9 +15,7 @@
     <div class="createAgendamento__funcionario formgroup">
       <label class="createAgendamento__funcionario__label" for="funcionario">Atendente:</label>
       <select name="funcionario" id="funcionario" formControlName="funcionario">
-        <option value="Ronaldo">Ronaldo</option>
-        <option value="José">José</option>
-        <option value="Túlio">Túlio</option>
+        <option *ngFor="let atend of atendentes; let i = index" value="{{atend.id}}">{{atend.nm_Funcionario}}</option>
       </select>
       <!-- <span *ngIf="(loginForm.controls.email.invalid && loginForm.controls.email.touched)" class="text-error">Insira um email válido!</span> -->
     </div>

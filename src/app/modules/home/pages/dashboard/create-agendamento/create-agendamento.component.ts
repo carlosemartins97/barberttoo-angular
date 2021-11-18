@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AgendamentosService } from 'src/app/core/services/agendamentos.service';
+import { AtendenteService } from 'src/app/core/services/atendente.service';
 import { CrudSerivce, ServicesService } from 'src/app/core/services/services.service';
+import { AtendenteInterface } from '../../../components/card-atendentes/card-atendentes.component';
 
 @Component({
   selector: 'app-create-agendamento',
@@ -27,16 +30,17 @@ export class CreateAgendamentoComponent implements OnInit {
   })
 
   servicos: CrudSerivce[] = [];
+  atendentes: AtendenteInterface[] = [];
 
-  constructor(private service: ServicesService) { }
+  constructor(private service: ServicesService, private atendente: AtendenteService, private agendamento: AgendamentosService) { }
 
   ngOnInit(): void {
     this.service.getServices().subscribe(res => this.servicos = res);
+    this.atendente.getAtendentes().subscribe(res => this.atendentes = res);
   }
 
   onSubmit() {
-    console.log('pimbas')
-
+   this.agendamento.createAgendamento(this.agendamentoForm.value);
   }
 
 }

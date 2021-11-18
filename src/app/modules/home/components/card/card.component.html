@@ -1,17 +1,17 @@
 <a routerLink="#">
   <div class="card">
     <div class="card__header">
-      <h2 class="card__header__title">Corte de cabelo</h2>
+      <h2 class="card__header__title">{{agendamento.servico.nm_servico}}</h2>
     </div>
   
     <div class="card__body">
       <div class="card__body__content">
         <div class="card__body__content__data">
-          <p>3 Ago.</p>
+          <p>{{dataFormatada}}</p>
         </div>
         <div class="card__body__content__info">
-          <p>Horário: <strong>13:45</strong></p>
-          <p>Funcionário: <strong>Joaquim</strong></p>
+          <p>Horário: <strong>{{horaFormatada}}</strong></p>
+          <p>Funcionário: <strong>{{agendamento.funcionario.nm_Funcionario}}</strong></p>
         </div>
       </div>
     </div>

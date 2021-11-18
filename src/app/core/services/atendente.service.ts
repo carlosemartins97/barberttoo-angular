@@ -21,7 +21,7 @@ export class AtendenteService {
   api = this.auth.api;
 
   getAtendentes() {
-    if(this.role !== 'ROLE_ADM' || 'ROLE_ATEND') {
+    if(this.role !== 'ROLE_ADM' && this.role !== 'ROLE_ATEND') {
       return this.http.get<AtendenteInterface[]>(`${this.api}/funcionario/lista`, {
         headers: {
           Authorization: `Bearer ${this.token}`

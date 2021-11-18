@@ -14,6 +14,7 @@ export interface AtendenteInterface {
   sg_Uf: string;
   cd_Cep: string;
   authority: string;
+  id: string;
 }
 
 @Component({

@@ -8,10 +8,8 @@
   </div>
 
   <div class="container__cards">
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
+    <app-card 
+      *ngFor="let agendamento of agendamentos; let i = index"
+      [agendamento]="agendamento"></app-card>
   </div>
 </main>

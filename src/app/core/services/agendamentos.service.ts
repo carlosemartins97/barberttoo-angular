@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { formatDateAndHour } from 'src/app/shared/helpers/format';
 import { AuthService } from '../auth/auth.service';
 import { CrudSerivce } from './services.service';
 
@@ -20,6 +22,13 @@ export interface Agendamento {
   }
 }
 
+export interface AgendamentoCurto {
+  funcionario: number;
+  servico: number;
+  cliente: number;
+  dt_Agendamento: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,31 +36,39 @@ export class AgendamentosService {
 
   token: string;
   role: string;
+  id: string;
 
-  constructor(private http: HttpClient ,private auth: AuthService) {
+  constructor(private http: HttpClient ,private auth: AuthService, private route: Router) {
     var dataToken = sessionStorage.getItem('jwtLogin');
     dataToken ? this.token = JSON.parse(dataToken).token : null;
     dataToken ? this.role = JSON.parse(dataToken).profile : null;
+    dataToken ? this.id = JSON.parse(dataToken).id : null;
   }
 
   api = this.auth.api;
 
   getAgendamentos() {
-    return this.http.get<Agendamento[]>(`${this.api}/agendamento/partial`, {
+    return this.http.get<Agendamento[]>(`${this.api}/agendamento/cliente/${this.id}`, {
       headers: {
         Authorization: `Bearer ${this.token}`
       }
     });
   }
 
-  createAgendamento(payload: {}) {
-    this.http.post<Agendamento>(`${this.api}/agendamento/create`, payload, {
+  createAgendamento(payload: {date: string,funcionario: string,hora: string, service: string}) {
+    const newPayload:AgendamentoCurto  = {
+      cliente: Number(this.id),
+      funcionario: Number(payload.funcionario),
+      servico: Number(payload.service),
+      dt_Agendamento: formatDateAndHour(payload.hora, payload.date)
+    }
+    this.http.post<AgendamentoCurto>(`${this.api}/agendamento/create`, newPayload, {
       headers: {
         Authorization: `Bearer ${this.token}`
       }
     }).subscribe({
       next: res => {
-        console.log(res);
+        this.route.navigate(['/app/agendamentos'])
       }, error: error => {
         console.log(error);
       }

@@ -19,3 +19,27 @@ export function dataAtualFormatada(date: any){
 export function formatCep(cep: string) {
   return cep[0] + cep[1] + cep[2] + cep[3] +cep[4] +'-'+ cep[5] + cep[6] + cep[7];
 }
+
+export function formatDateAndHour(hour: string, date: string) {
+  return `${date+' '+hour}:00`;
+}
+
+export function formatDateForAgendamentos(date: string) {
+  let b = new Date(date)
+
+  const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+  "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+  ];
+
+  return b.getDate() +' '+ monthNames[b.getMonth()].substring(0,3)+'.';
+}
+
+export function formateHourForAgendamentos(date: string) {
+  let min = new Date(date).getMinutes();
+  let hour = new Date(date).getHours();
+
+  if(min === 0) {
+    return `${hour}:${min}0`;
+  }
+  return `${hour}:${min}`;
+}
