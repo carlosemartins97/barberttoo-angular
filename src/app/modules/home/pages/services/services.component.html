@@ -12,10 +12,10 @@
   </div>
 
   <div class="services__body" *ngIf="!isLoading">
+    <p *ngIf="servicos.length === 0">Não existe nenhum serviço cadastrado no momento.</p>
     <app-card-service
       *ngFor="let serv of servicos; let i = index" 
       [servico]="serv"></app-card-service>
   </div>
 
-  <!-- <button (click)="onCreateService()">teste</button> -->
 </main>

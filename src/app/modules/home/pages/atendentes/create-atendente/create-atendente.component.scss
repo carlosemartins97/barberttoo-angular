@@ -1,0 +1,20 @@
+@import '../../../../../../assets/scss/0-base/colors';
+
+.createAtendente {
+  margin-top: 24px;
+  &__header {
+    &__title {
+      position: relative;
+      padding-bottom: 10px;
+      &::after {
+        content: '';
+        left: 0;
+        bottom: 0;
+        position: absolute;
+        width: 100px;
+        height: 4px;
+        background: $color-amarelo;
+      }
+    }
+  }
+}

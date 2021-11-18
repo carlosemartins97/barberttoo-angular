@@ -1,5 +1,5 @@
-<form class="register" [formGroup]='registerForm' (ngSubmit)="onSubmit()">
-  <div class="register__nome">
+<form class='register'[ngClass]="{'atendMode': mode === 'atendente'}" [formGroup]="mode === 'atendente' ? registerAtendForm : registerForm" (ngSubmit)="onSubmit()" >
+  <div class="register__nome formgroup">
     <label class="register__nome__label" for="nome">Nome completo:</label>
     <input 
       type="text" 
@@ -12,7 +12,7 @@
     <span *ngIf="((registerForm.controls.nome.invalid && registerForm.controls.nome.touched) )" class="text-error">Insira seu nome completo!</span>
   </div>
 
-  <div class="register__cpf">
+  <div class="register__cpf formgroup">
     <label class="register__cpf__label" for="cpf">CPF:</label>
     <input 
       type="text" 
@@ -25,7 +25,7 @@
     <span *ngIf="(registerForm.controls.cpf.invalid && registerForm.controls.cpf.touched)" class="text-error">Digite um cpf válido!</span>
   </div>
 
-  <div class="register__phone">
+  <div class="register__phone formgroup">
     <label class="register__phone__label" for="phone">Telefone ou celular:</label>
     <input 
       type="text" 
@@ -38,20 +38,54 @@
     <span *ngIf="(registerForm.controls.phone.invalid && registerForm.controls.phone.touched)" class="text-error">Insira um telefone/celular válido!</span>
   </div>
 
-  <div class="register__date">
+  <div class="register__date formgroup">
     <label class="register__date__label" for="date">Data de nascimento:</label>
     <input type="date" id="date" name="date" formControlName="date" aria-label="Data de nascimento">
     <span *ngIf="(registerForm.controls.date.invalid && registerForm.controls.date.touched)" class="text-error">Insira sua data de nascimento!</span>
-
   </div>
 
-  <div class="register__email">
+  <div class="register__cep formgroup" *ngIf="mode === 'atendente'">
+    <label class="register__cep__label" for="cep">CEP:</label>
+    <input type="text" id="cep" name="cep" formControlName="cep" aria-label="CEP" mask="00000-000" (change)="onFillCEP()">
+    <!-- <span *ngIf="(registerForm.controls.date.invalid && registerForm.controls.date.touched)" class="text-error">Insira sua data de nascimento!</span> -->
+  </div>
+
+  <div class="register__city formgroup" *ngIf="mode === 'atendente'">
+    <label class="register__city__label" for="city">Cidade:</label>
+    <input type="text" id="city" name="city" formControlName="city" aria-label="Cidade">
+    <!-- <span *ngIf="(registerForm.controls.date.invalid && registerForm.controls.date.touched)" class="text-error">Insira sua data de nascimento!</span> -->
+  </div>
+
+  <div class="register__uf formgroup" *ngIf="mode === 'atendente'">
+    <label class="register__uf__label" for="uf">Estado:</label>
+    <select name="uf" id="uf" formControlName="uf">
+      <option *ngFor="let estado of estados; let i = index" value="{{estado.sigla}}">{{estado.nome}}</option>
+    </select>
+    <!-- <span *ngIf="(registerForm.controls.date.invalid && registerForm.controls.date.touched)" class="text-error">Insira sua data de nascimento!</span> -->
+  </div>
+
+  <div class="register__address formgroup" *ngIf="mode === 'atendente'">
+    <label class="register__address__label" for="address">Endereço:</label>
+    <input type="text" id="address" name="address" formControlName="address" aria-label="Endereço">
+    <!-- <span *ngIf="(registerForm.controls.date.invalid && registerForm.controls.date.touched)" class="text-error">Insira sua data de nascimento!</span> -->
+  </div>
+
+  <div class="register__role formgroup" *ngIf="mode === 'atendente'">
+    <label class="register__role__label" for="role">Autorização:</label>
+    <select name="role" id="role" formControlName="role">
+      <option value="ROLE_ATEND">Atendente</option>
+      <option value="ROLE_ADM">Administrador</option>
+    </select>
+    <!-- <span *ngIf="(registerForm.controls.date.invalid && registerForm.controls.date.touched)" class="text-error">Insira sua data de nascimento!</span> -->
+  </div>
+
+  <div class="register__email formgroup">
     <label class="register__email__label" for="email">E-mail:</label>
     <input type="email" id="email" name="email" formControlName="email" aria-label="E-mail" maxlength="150">
     <span *ngIf="(registerForm.controls.email.invalid && registerForm.controls.email.touched)" class="text-error">Digite um e-mail válido!</span>
   </div>
 
-  <div class="register__password">
+  <div class="register__password formgroup">
     <label class="register__password__label" for="password">Senha:</label>
     <input type="password" id="password" name="password" formControlName="password" aria-label="Senha" maxlength="30">
     <span *ngIf="(registerForm.controls.password.invalid && registerForm.controls.password.touched)" class="text-error">A senha deve ter entre 6 a 30 caractéres.</span>

@@ -17,17 +17,19 @@ export class ServicesService {
 
   token: string;
   role: string;
+  name: string;
+  id: number;
 
   constructor(private http: HttpClient, private auth: AuthService, private route: Router) {
     var dataToken = sessionStorage.getItem('jwtLogin');
     dataToken ? this.token = JSON.parse(dataToken).token : null;
+    dataToken ? this.name = JSON.parse(dataToken).nome : null;
     dataToken ? this.role = JSON.parse(dataToken).profile : null;
+    dataToken ? this.id = JSON.parse(dataToken).id : null;
   }
 
   api = this.auth.api;
   serviceData: CrudSerivce[] = [];
-
-  
 
   getServices() {
     return this.http.get<CrudSerivce[]>(`${this.api}/servico`, {

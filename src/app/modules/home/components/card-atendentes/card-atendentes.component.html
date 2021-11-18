@@ -1,9 +1,9 @@
 <div class="card">
   <div class="card__header">
-    <button type="button"><fa-icon [icon]="faTrash" class="icon"></fa-icon></button>
-    <h2 class="card__header__name">Joaquim</h2>
-    <p class="card__header__email"><strong>Email:</strong> joaquim@teste.com</p>
-    <p class="card__header__phone"><strong>Celular:</strong> (13) 99999-9999</p>
-    <p class="card__header__role"><strong>Cargo:</strong> Atendente</p>
+    <button type="button" *ngIf="role === 'ROLE_ADM'"><fa-icon [icon]="faTrash" class="icon"></fa-icon></button>
+    <h2 class="card__header__name">{{atendente.nm_Funcionario}}</h2>
+    <p class="card__header__email"><strong>Email:</strong> {{atendente.ds_Email}}</p>
+    <p class="card__header__phone"><strong>Celular:</strong> {{atendente.cd_Celular}}</p>
+    <p class="card__header__role" *ngIf="atendente.authority"><strong>Cargo:</strong> {{atendente.authority}}</p>
   </div>
 </div>

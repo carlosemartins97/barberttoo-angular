@@ -22,6 +22,7 @@ import { CreateServiceComponent } from './pages/services/create-service/create-s
 import { CreateAgendamentoComponent } from './pages/dashboard/create-agendamento/create-agendamento.component';
 import { AtendentesComponent } from './pages/atendentes/atendentes.component';
 import { CardAtendentesComponent } from './components/card-atendentes/card-atendentes.component';
+import { CreateAtendenteComponent } from './pages/atendentes/create-atendente/create-atendente.component';
 
 
 
@@ -44,7 +45,8 @@ import { CardAtendentesComponent } from './components/card-atendentes/card-atend
     CreateServiceComponent,
     CreateAgendamentoComponent,
     AtendentesComponent,
-    CardAtendentesComponent
+    CardAtendentesComponent,
+    CreateAtendenteComponent
   ],
   imports: [
     CommonModule,

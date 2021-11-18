@@ -1,10 +1,10 @@
 <main class="atendentes">
   <div class="atendentes__header">
     <h1 class="atendentes__header__title">
-      Serviços
+      Atendentes
     </h1>
 
-    <!-- <a *ngIf="role === 'ROLE_ADM'" class="atendentes__header__btn" routerLink="/app/atendentes/create">novo serviço</a> -->
+    <a *ngIf="role === 'ROLE_ADM'" class="atendentes__header__btn" routerLink="/app/atendente/create">novo atendente</a>
   </div>
 
   <div class="loader" *ngIf="isLoading">
@@ -12,11 +12,8 @@
   </div>
 
   <div class="atendentes__body" *ngIf="!isLoading">
-    <app-card-atendentes></app-card-atendentes>
-    <app-card-atendentes></app-card-atendentes>
-    <app-card-atendentes></app-card-atendentes>
-    <app-card-atendentes></app-card-atendentes>
+    <app-card-atendentes 
+      *ngFor="let atendente of atendentes; let i = index"
+      [atendente]="atendente"></app-card-atendentes>
   </div>
-
-  <!-- <button (click)="onCreateService()">teste</button> -->
 </main>

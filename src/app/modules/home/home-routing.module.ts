@@ -9,6 +9,7 @@ import { ServicesComponent } from './pages/services/services.component';
 import { CreateServiceComponent } from './pages/services/create-service/create-service.component';
 import { CreateAgendamentoComponent } from './pages/dashboard/create-agendamento/create-agendamento.component';
 import { AtendentesComponent } from './pages/atendentes/atendentes.component';
+import { CreateAtendenteComponent } from './pages/atendentes/create-atendente/create-atendente.component';
 
 const appRoutes = [
   {path: '', component: HomeComponent, preMatch: 'full'},
@@ -18,7 +19,8 @@ const appRoutes = [
     {path: 'agendamentos/create', component: CreateAgendamentoComponent},
     {path: 'services', component: ServicesComponent},
     {path: 'services/create', component: CreateServiceComponent},
-    {path: 'atendente', component: AtendentesComponent}
+    {path: 'atendente', component: AtendentesComponent},
+    {path: 'atendente/create', component: CreateAtendenteComponent}
   ]},
 ]
 

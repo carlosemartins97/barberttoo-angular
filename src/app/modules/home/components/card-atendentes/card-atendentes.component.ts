@@ -1,5 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { ServicesService } from 'src/app/core/services/services.service';
+
+export interface AtendenteInterface {
+  nm_Funcionario: string;
+  ds_Email: string;
+  cd_Cpf: string;
+  dt_BirthDate: string;
+  cd_Celular: string;
+  cd_Password: string;
+  ds_Endereco: string;
+  ds_Cidade: string;
+  sg_Uf: string;
+  cd_Cep: string;
+  authority: string;
+}
 
 @Component({
   selector: 'app-card-atendentes',
@@ -8,11 +23,16 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 })
 export class CardAtendentesComponent implements OnInit {
 
+  @Input() atendente: AtendenteInterface;
+
   faTrash = faTrash;
 
-  constructor() { }
+  role: string;
+
+  constructor(private service: ServicesService) { }
 
   ngOnInit(): void {
+    this.role = this.service.role;
   }
 
 }

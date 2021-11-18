@@ -15,3 +15,7 @@ export function dataAtualFormatada(date: any){
       anoF = data.getFullYear();
   return diaF+"/"+mesF+"/"+anoF;
 }
+
+export function formatCep(cep: string) {
+  return cep[0] + cep[1] + cep[2] + cep[3] +cep[4] +'-'+ cep[5] + cep[6] + cep[7];
+}
