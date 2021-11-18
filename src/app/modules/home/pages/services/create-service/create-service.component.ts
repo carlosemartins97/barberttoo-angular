@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { ServicesService } from 'src/app/core/services/services.service';
+import { TitleService } from 'src/app/core/services/title.service';
 
 @Component({
   selector: 'app-create-service',
@@ -25,11 +26,16 @@ export class CreateServiceComponent implements OnInit {
     ]),
   })
 
-  constructor(private service: ServicesService, private auth: AuthService, private route: Router) { }
+  constructor(
+    private service: ServicesService, 
+    private auth: AuthService, 
+    private route: Router, 
+    private titleService: TitleService
+  ) { }
 
   ngOnInit(): void {
-    console.log(this.service.role);
-    this.service.role !== 'ROLE_ADM' ? this.route.navigate(['/app/services']) : null;
+    this.titleService.setTitle('Novo serviço | Barberttoo');
+    this.auth.getUserInfo().profile !== 'ROLE_ADM' ? this.route.navigate(['/app/services']) : null;
   }
 
   onSubmit() {

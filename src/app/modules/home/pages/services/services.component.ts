@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/auth/auth.service';
 import { CrudSerivce, ServicesService } from 'src/app/core/services/services.service';
+import { TitleService } from 'src/app/core/services/title.service';
 
 @Component({
   selector: 'app-services',
@@ -8,7 +10,10 @@ import { CrudSerivce, ServicesService } from 'src/app/core/services/services.ser
 })
 export class ServicesComponent implements OnInit {
 
-  constructor(private services: ServicesService) { }
+  constructor(private auth: AuthService, 
+    private services: ServicesService, 
+    private titleService: TitleService
+  ) { }
 
   isLoading = false;
   servicos: CrudSerivce[] = [];
@@ -17,7 +22,9 @@ export class ServicesComponent implements OnInit {
   admMode = false;
 
   ngOnInit(): void {
-    this.role = this.services.role;
+    this.titleService.setTitle('Serviços | Barberttoo');
+    
+    this.role = this.auth.getUserInfo().profile;
 
     this.isLoading = true;
     this.services.getServices().subscribe({

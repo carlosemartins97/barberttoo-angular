@@ -34,37 +34,33 @@ export interface AgendamentoCurto {
 })
 export class AgendamentosService {
 
-  token: string;
-  role: string;
-  id: string;
-
   constructor(private http: HttpClient ,private auth: AuthService, private route: Router) {
-    var dataToken = sessionStorage.getItem('jwtLogin');
-    dataToken ? this.token = JSON.parse(dataToken).token : null;
-    dataToken ? this.role = JSON.parse(dataToken).profile : null;
-    dataToken ? this.id = JSON.parse(dataToken).id : null;
   }
 
   api = this.auth.api;
 
   getAgendamentos() {
-    return this.http.get<Agendamento[]>(`${this.api}/agendamento/cliente/${this.id}`, {
+    const token = this.auth.getUserInfo().token;
+    const id = this.auth.getUserInfo().id;
+    return this.http.get<Agendamento[]>(`${this.api}/agendamento/cliente/${id}`, {
       headers: {
-        Authorization: `Bearer ${this.token}`
+        Authorization: `Bearer ${token}`
       }
     });
   }
 
   createAgendamento(payload: {date: string,funcionario: string,hora: string, service: string}) {
+    const token = this.auth.getUserInfo().token;
+    const id = this.auth.getUserInfo().id;
     const newPayload:AgendamentoCurto  = {
-      cliente: Number(this.id),
+      cliente: Number(id),
       funcionario: Number(payload.funcionario),
       servico: Number(payload.service),
       dt_Agendamento: formatDateAndHour(payload.hora, payload.date)
     }
     this.http.post<AgendamentoCurto>(`${this.api}/agendamento/create`, newPayload, {
       headers: {
-        Authorization: `Bearer ${this.token}`
+        Authorization: `Bearer ${token}`
       }
     }).subscribe({
       next: res => {
@@ -76,9 +72,10 @@ export class AgendamentosService {
   }
 
   deleteAgendamento(id: number) {
+    const token = this.auth.getUserInfo().token;
     this.http.delete<any>(`${this.api}/agendamento/${id}`, { 
       headers: {
-        Authorization: `Bearer ${this.token}`
+        Authorization: `Bearer ${token}`
       }
     }).subscribe({
       next: res => {

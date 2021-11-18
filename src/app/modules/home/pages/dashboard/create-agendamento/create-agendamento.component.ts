@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AgendamentosService } from 'src/app/core/services/agendamentos.service';
 import { AtendenteService } from 'src/app/core/services/atendente.service';
 import { CrudSerivce, ServicesService } from 'src/app/core/services/services.service';
+import { TitleService } from 'src/app/core/services/title.service';
 import { AtendenteInterface } from '../../../components/card-atendentes/card-atendentes.component';
 
 @Component({
@@ -32,9 +33,14 @@ export class CreateAgendamentoComponent implements OnInit {
   servicos: CrudSerivce[] = [];
   atendentes: AtendenteInterface[] = [];
 
-  constructor(private service: ServicesService, private atendente: AtendenteService, private agendamento: AgendamentosService) { }
+  constructor(private service: ServicesService, 
+    private atendente: AtendenteService, 
+    private agendamento: AgendamentosService,
+    private titleService: TitleService
+  ) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Novo agendamento | Barberttoo');
     this.service.getServices().subscribe(res => this.servicos = res);
     this.atendente.getAtendentes().subscribe(res => this.atendentes = res);
   }

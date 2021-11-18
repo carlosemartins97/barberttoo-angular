@@ -7,7 +7,12 @@
     </a>
   </div>
 
-  <div class="container__cards">
+  <div class="container__loading" *ngIf="isLoading">
+    <app-loader></app-loader>
+  </div>
+
+  <div class="container__cards" *ngIf="!isLoading">
+    <p *ngIf="agendamentos.length === 0">Não existe nenhum agendamento realizado no momento.</p>
     <app-card 
       *ngFor="let agendamento of agendamentos; let i = index"
       [agendamento]="agendamento"></app-card>

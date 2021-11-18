@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/core/auth/auth.service';
 import { CrudSerivce, ServicesService } from 'src/app/core/services/services.service';
 
 @Component({
@@ -14,10 +15,12 @@ export class CardServiceComponent implements OnInit {
   @Input() servico: CrudSerivce;
 
   link: string;
+  role: string;
 
-  constructor(public service: ServicesService) { }
+  constructor(private service: ServicesService, private auth: AuthService) { }
   
   ngOnInit(): void {
+    this.role = this.auth.getUserInfo().profile;
     this.link = `../agendamentos/create`;
   }
 

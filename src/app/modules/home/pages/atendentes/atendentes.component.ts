@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/auth/auth.service';
 import { AtendenteService } from 'src/app/core/services/atendente.service';
 import { ServicesService } from 'src/app/core/services/services.service';
+import { TitleService } from 'src/app/core/services/title.service';
 import { AtendenteInterface } from '../../components/card-atendentes/card-atendentes.component';
 
 @Component({
@@ -13,17 +15,18 @@ export class AtendentesComponent implements OnInit {
   isLoading = false;
   role: string;
 
-  atendentes: AtendenteInterface[];
+  atendentes: AtendenteInterface[] = [];
 
-  constructor(private service: ServicesService, private atendenteService: AtendenteService) { }
+  constructor(private auth: AuthService, private atendenteService: AtendenteService, private titleService: TitleService) { }
 
   ngOnInit(): void {
-    this.role = this.service.role;
+    this.titleService.setTitle('Atendentes | Barberttoo');
+    this.role = this.auth.getUserInfo().profile;
+    console.log(this.role);
     
     this.isLoading = true;
     this.atendenteService.getAtendentes().subscribe({
       next: res => {
-        console.log(res);
         this.atendentes = res;
         this.isLoading = false;
       }, error: error => {

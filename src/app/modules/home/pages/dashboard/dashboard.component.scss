@@ -47,6 +47,10 @@
     }
   }
 
+  &__loading, &__notfound {
+    margin-top: 48px;
+  }
+
   &__cards {
     margin-top: 48px;
 

@@ -15,31 +15,26 @@ export interface CrudSerivce {
 })
 export class ServicesService {
 
-  token: string;
-  role: string;
-  name: string;
-  id: number;
-
+  
   constructor(private http: HttpClient, private auth: AuthService, private route: Router) {
-    var dataToken = sessionStorage.getItem('jwtLogin');
-    dataToken ? this.token = JSON.parse(dataToken).token : null;
-    dataToken ? this.name = JSON.parse(dataToken).nome : null;
-    dataToken ? this.role = JSON.parse(dataToken).profile : null;
-    dataToken ? this.id = JSON.parse(dataToken).id : null;
+    console.log('construido')
   }
+
 
   api = this.auth.api;
   serviceData: CrudSerivce[] = [];
 
   getServices() {
+    const token = this.auth.getUserInfo().token;
     return this.http.get<CrudSerivce[]>(`${this.api}/servico`, {
       headers: {
-        Authorization: `Bearer ${this.token}`
+        Authorization: `Bearer ${token}`
       }
     });
   }
 
   createService(payload: {name: string, descricao: string, price: string}) {
+    const token = this.auth.getUserInfo().token;
     const newPayload = {
       nm_servico: payload.name,
       ds_servico: payload.descricao,
@@ -48,7 +43,7 @@ export class ServicesService {
 
     this.http.post<CrudSerivce>(`${this.api}/servico/create`, newPayload, {
       headers: {
-        Authorization: `Bearer ${this.token}`
+        Authorization: `Bearer ${token}`
       }
     }).subscribe({
       next: res => {
@@ -61,9 +56,10 @@ export class ServicesService {
   }
 
   deleteService(id: number) {
+    const token = this.auth.getUserInfo().token;
     this.http.delete<any>(`${this.api}/servico/${id}`, { 
       headers: {
-        Authorization: `Bearer ${this.token}`
+        Authorization: `Bearer ${token}`
       }
     }).subscribe({
       next: res => {

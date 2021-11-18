@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { dataAtualFormatada, formatCep, formatCpf, formatPhone } from 'src/app/shared/helpers/format';
+import { ServicesService } from '../services/services.service';
 
 export interface Auth {
   token: string;
@@ -33,15 +34,14 @@ export class AuthService {
 
   api = 'https://sistema-barbertoo.herokuapp.com';
 
-  token: string | null;
-  profile: string;
-  id: number;
-  name: string;
-
   constructor(
-    private http: HttpClient, private route: Router,
-    private cookieService: CookieService
+    private http: HttpClient, private route: Router
   ) { }
+
+  getUserInfo() {
+    var dataToken = sessionStorage.getItem('jwtLogin');
+    return JSON.parse(dataToken!);
+  }
 
   login(payload: {email: string, password: string}, save: boolean) {
     const newPayload = {
@@ -50,7 +50,6 @@ export class AuthService {
     }
     this.http.post<Auth>(`${this.api}/login`, newPayload).subscribe({
       next: (res) => {
-        this.token = res.token;
         sessionStorage.setItem('jwtLogin', JSON.stringify(res));
         // if(save) {
         //   this.cookieService.set('jwtLogin', JSON.stringify(res));
@@ -115,7 +114,6 @@ export class AuthService {
   }
 
   logout() {
-    this.token = null;
     sessionStorage.removeItem('jwtLogin');
     this.route.navigate(['/']);
   }

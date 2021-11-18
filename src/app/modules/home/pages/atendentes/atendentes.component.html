@@ -12,6 +12,7 @@
   </div>
 
   <div class="atendentes__body" *ngIf="!isLoading">
+    <p *ngIf="atendentes.length === 0">Não existe nenhum atendente cadastrado no momento.</p>
     <app-card-atendentes 
       *ngFor="let atendente of atendentes; let i = index"
       [atendente]="atendente"></app-card-atendentes>

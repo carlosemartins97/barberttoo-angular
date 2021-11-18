@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/core/auth/auth.service';
 import { ServicesService } from 'src/app/core/services/services.service';
 
 export interface AtendenteInterface {
@@ -30,10 +31,11 @@ export class CardAtendentesComponent implements OnInit {
 
   role: string;
 
-  constructor(private service: ServicesService) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.role = this.service.role;
+    this.role = this.auth.getUserInfo().profile;
+    console.log(this.role);
   }
 
 }

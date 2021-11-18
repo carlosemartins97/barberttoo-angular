@@ -11,15 +11,17 @@ import { TitleService } from 'src/app/core/services/title.service';
 export class DashboardComponent implements OnInit {
 
   agendamentos: any[] = [];
+  isLoading = false;
 
   constructor(private titleService: TitleService, private agendamento: AgendamentosService) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.titleService.setTitle('Agendamentos | Barberttoo');
     this.agendamento.getAgendamentos().subscribe({
       next: res => {
         this.agendamentos = res;
-        console.log(this.agendamentos);
+        this.isLoading = false;
       }, error: error => {
         console.log(error);
       }
