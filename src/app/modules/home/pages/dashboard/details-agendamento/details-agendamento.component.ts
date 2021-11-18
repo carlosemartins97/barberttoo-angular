@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Agendamento, AgendamentosService } from 'src/app/core/services/agendamentos.service';
+import { TitleService } from 'src/app/core/services/title.service';
 
 @Component({
   selector: 'app-details-agendamento',
@@ -20,10 +21,12 @@ export class DetailsAgendamentoComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private agendamentosService: AgendamentosService
+    private agendamentosService: AgendamentosService,
+    private titleService: TitleService
   ) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Detalhes do agendamento | Barberttoo');
     this.isLoading = true;
     //capturando id da url
     this.activatedRoute.paramMap.subscribe(res => {

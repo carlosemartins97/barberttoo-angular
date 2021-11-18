@@ -3,7 +3,7 @@
   <div class="card__header">
     <h2 class="card__header__title">{{agendamento.servico.nm_servico}}</h2>
 
-    <button type="button"><fa-icon [icon]="faTrash" class="icon" (click)="onDelete(+agendamento.id)"></fa-icon></button>
+    <button class="btnTrash" type="button"><fa-icon [icon]="faTrash" class="icon" (click)="onDelete(+agendamento.id)"></fa-icon></button>
   </div>
 
   <div class="card__body">
