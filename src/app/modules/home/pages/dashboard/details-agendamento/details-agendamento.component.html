@@ -1,1 +1,59 @@
-<p>details-agendamento works!</p>
+<main class="details">
+  <div class="details__header">
+    <h1 class="details__header__title">
+      Detalhes do agendamento
+    </h1>
+  </div>
+
+  <div class="details__body">
+    <a class="back" routerLink="../../agendamentos"><fa-icon class="backIcon" [icon]="faArrowLeft" aria-hidden="true"></fa-icon> Voltar</a>
+    <div class="details__body__card">
+      <div class="details__body__card__user">
+        <div class="details__body__card__user__header">
+          <h2>Dados do usuário</h2>
+        </div>
+        <div class="details__body__card__user__body">
+          <div class="infogroup">
+            <span>Nome:</span>
+            <p>{{agendamento.cliente.nm_Cliente}}</p>
+          </div>
+
+          <div class="infogroup">
+            <span>E-mail:</span>
+            <p>{{agendamento.cliente.ds_Email}}</p>
+          </div>
+
+          <div class="infogroup">
+            <span>Celular:</span>
+            <p>{{agendamento.cliente.cd_Celular}}</p>
+          </div>
+        </div>
+        
+      </div>
+      <div class="details__body__card__agendamento">
+        <div class="details__body__card__agendamento__header">
+          <h2>Dados do agendamento</h2>
+        </div>
+        <div class="details__body__card__agendamento__body">
+          <div class="infogroup">
+            <span>Data:</span>
+            <p>{{dataAgendamento}}</p>
+          </div>
+          <div class="infogroup">
+            <span>Horário:</span>
+            <p>{{horarioAgendamento}}</p>
+          </div>
+          <div class="infogroup">
+            <span>Atendente:</span>
+            <p>{{agendamento.funcionario.nm_Funcionario}}</p>
+          </div>
+          <div class="infogroup">
+            <span>Contato:</span>
+            <p>{{agendamento.funcionario.cd_Celular}}</p>
+            <p>{{agendamento.funcionario.ds_Email}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

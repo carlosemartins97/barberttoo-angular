@@ -33,11 +33,13 @@ export class CardAtendentesComponent implements OnInit {
 
   role: string;
 
+  roleExibition: string;
+
   constructor(private auth: AuthService, private atendenteService: AtendenteService) { }
 
   ngOnInit(): void {
     this.role = this.auth.getUserInfo().profile;
-    console.log(this.role);
+    this.formatRole(this.atendente.authority);
   }
 
   onDelete(id: number) {
@@ -50,6 +52,14 @@ export class CardAtendentesComponent implements OnInit {
         console.log(error);
       }
     })
+  }
+
+  formatRole(role: string) {
+    if(role === 'ROLE_ATEND') {
+      this.roleExibition = 'Atendente'
+    } else if(role === 'ROLE_ADM') {
+      this.roleExibition = 'Administrador'
+    }
   }
 
 }

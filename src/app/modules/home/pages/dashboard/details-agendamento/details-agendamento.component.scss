@@ -1,0 +1,88 @@
+@import '../../../../../../assets/scss/0-base/colors';
+
+.details {
+  &__header {
+    margin: 24px 0 48px;
+    &__title {
+      position: relative;
+      padding-bottom: 10px;
+      &::after {
+        content: '';
+        left: 0;
+        bottom: 0;
+        position: absolute;
+        width: 100px;
+        height: 4px;
+        background: $color-amarelo;
+      }
+    }
+  }
+
+  &__body {
+    .back {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      text-transform: uppercase;
+      color: $color-amarelo;
+
+      .backIcon {
+        color: $color-amarelo;
+        font-size: 12px;
+        margin-right: 4px;
+      }
+      margin-bottom: 16px;
+    }
+
+    &__card {
+      background: $color-branco;
+      padding: 32px 16px;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      span, p, h2 {
+        color: $color-dark;
+      }
+
+      &__user,
+      &__agendamento {
+        width: 100%;
+        margin: 0 auto;
+        border-top: 1px solid $color-cinza-claro;
+        border-bottom: 1px solid $color-cinza-claro;
+        padding: 32px;
+
+        &__header,
+        &__body {
+          max-width: 400px;
+          width: 100%;
+          margin: 0 auto;
+
+          .infogroup {
+            margin-top: 16px;
+            span {
+              font-weight: bold;
+              font-size: 18px;
+            }
+            p {
+              line-height: 24px;
+            }
+          }
+        }
+      }
+
+      &__user {
+        position: relative;
+        &::after {
+          content: '';
+          position: absolute;
+          height: 80%;
+          width: 1px;
+          background: $color-cinza-claro;
+          top: 10%;
+          right: 0;
+        }
+      }
+    }
+  }
+}

@@ -4,6 +4,6 @@
     <h2 class="card__header__name">{{atendente.nm_Funcionario}}</h2>
     <p class="card__header__email"><strong>Email:</strong> {{atendente.ds_Email}}</p>
     <p class="card__header__phone"><strong>Celular:</strong> {{atendente.cd_Celular}}</p>
-    <p class="card__header__role" *ngIf="role === 'ROLE_ADM'"><strong>Cargo:</strong> {{atendente.authority}}</p>
+    <p class="card__header__role" *ngIf="role === 'ROLE_ADM'"><strong>Cargo:</strong> {{roleExibition}}</p>
   </div>
 </div>

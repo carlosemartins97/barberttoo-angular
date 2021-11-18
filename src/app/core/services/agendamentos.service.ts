@@ -19,6 +19,7 @@ export interface Agendamento {
     id: number;
     nm_Cliente: string;
     ds_Email: string;
+    cd_Celular: string;
   }
 }
 
@@ -47,6 +48,11 @@ export class AgendamentosService {
         Authorization: `Bearer ${token}`
       }
     });
+  }
+
+  getAgendamentoById(id: number) {
+    const token = this.auth.getUserInfo().token;
+    return this.http.get<Agendamento>(`${this.api}/agendamento/${id}`);
   }
 
   createAgendamento(payload: {date: string,funcionario: string,hora: string, service: string}) {
