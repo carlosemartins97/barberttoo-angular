@@ -52,7 +52,11 @@ export class AgendamentosService {
 
   getAgendamentoById(id: number) {
     const token = this.auth.getUserInfo().token;
-    return this.http.get<Agendamento>(`${this.api}/agendamento/${id}`);
+    return this.http.get<Agendamento>(`${this.api}/agendamento/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
   }
 
   createAgendamento(payload: {date: string,funcionario: string,hora: string, service: string}) {
@@ -84,6 +88,15 @@ export class AgendamentosService {
         Authorization: `Bearer ${token}`
       }
     })
+  }
+
+  getAgendamentoByAtendente(id: number) {
+    const token = this.auth.getUserInfo().token;
+    return this.http.get<Agendamento[]>(`${this.api}/agendamento/funcionario/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
   }
 
 

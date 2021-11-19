@@ -127,7 +127,7 @@ export class RegisterFormComponent implements OnInit {
   
         this.activatedRoute.params.subscribe(res => {
           this.id = Number(res.id);
-          if(this.id) {
+          if(this.id === 0 || this.id) {
             this.isLoading = true;
             this.editMode = 2;
   
@@ -194,7 +194,6 @@ export class RegisterFormComponent implements OnInit {
         if(this.editMode === 2) {
           this.atendenteService.updateAtendente(this.registerAtendForm.value ,this.id);
         } else if(this.editMode === 3) {
-          console.log(this.registerAtendForm.value);
           this.auth.registerAtendente(this.registerAtendForm.value, this.mode);
           
         }
@@ -207,7 +206,6 @@ export class RegisterFormComponent implements OnInit {
         this.registerForm.controls.phone.setValue(this.registerAtendForm.get('phone')?.value);
         this.registerForm.controls.date.setValue(this.registerAtendForm.get('date')?.value);
         this.registerForm.controls.cpf.setValue(this.registerAtendForm.get('cpf')?.value);
-        console.log(this.registerForm.value);
 
         this.clienteService.updateCliente(this.registerForm.value, this.id);
       } else {
@@ -216,7 +214,6 @@ export class RegisterFormComponent implements OnInit {
       }
     } else {
       //REGISTRO DO CLIENTE FORA DA APLICAÇÃO
-      console.log(this.editMode);
       if(this.registerForm.valid) {
         this.loader = true;
         this.auth.register(this.registerForm.value, this.mode);

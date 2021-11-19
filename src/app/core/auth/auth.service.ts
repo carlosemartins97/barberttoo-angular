@@ -87,7 +87,6 @@ export class AuthService {
       }
       this.http.post<any>(`${this.api}/funcionario/create`, newPayload).subscribe({
         next: (res) => {
-          console.log(res);
           this.route.navigate(['/app/atendente'])
         },
         error: error => {
@@ -142,7 +141,6 @@ export class AuthService {
         }
       }).subscribe({
         next: (res) => {
-          console.log(res);
           this.route.navigate(['/app/atendentes'])
         },
         error: error => {

@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {;
     if(this.loginForm.valid) {
       this.loader = true;
       this.auth.login(this.loginForm.value);
+      this.loader = false;
     }
   }
 

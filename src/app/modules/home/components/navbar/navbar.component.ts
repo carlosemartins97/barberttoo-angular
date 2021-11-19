@@ -26,7 +26,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.auth.getUserInfo().id;
     this.auth.name.subscribe(nome => {
-      console.log('emiti um valor');
       this.userName = nome;
     })
   }

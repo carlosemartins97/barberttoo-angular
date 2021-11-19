@@ -16,7 +16,6 @@ export class AtendenteService {
 
   getAtendentes() {
     const token = this.auth.getUserInfo().token;
-    console.log(token);
     const role = this.auth.getUserInfo().profile;
     if(role !== 'ROLE_ADM' && role !== 'ROLE_ATEND') {
       return this.http.get<AtendenteInterface[]>(`${this.api}/funcionario/lista`, {
@@ -71,7 +70,6 @@ export class AtendenteService {
       nm_Funcionario: payload.nome,
       sg_Uf: payload.uf
     }
-    console.log(newPayload);  
 
     this.http.put<AtendenteInterface>(`${this.api}/funcionario/`, newPayload ,{
       headers: {

@@ -1,8 +1,9 @@
 <main class="container">
   <div class="container__header">
-    <h1 class="container__header__title">Agendamentos</h1>
+    <h1 class="container__header__title" *ngIf="mode === 'cliente'">Agendamentos</h1>
+    <h1 class="container__header__title" *ngIf="mode === 'atendente'">Agendamentos ativos</h1>
 
-    <a routerLink="create" class="container__header__novoAgd">
+    <a routerLink="create" class="container__header__novoAgd" *ngIf="mode === 'cliente'">
       novo agendamento
     </a>
   </div>

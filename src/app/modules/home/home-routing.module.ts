@@ -24,7 +24,7 @@ const appRoutes = [
     {path: 'services/create', component: CreateServiceComponent},
     {path: 'atendentes', component: AtendentesComponent},
     {path: 'atendente/edit/:id', component: CreateAtendenteComponent},
-    {path: 'atendente/create', component: CreateAtendenteComponent}
+    {path: 'atendente/create', component: CreateAtendenteComponent},
   ]},
 ]
 

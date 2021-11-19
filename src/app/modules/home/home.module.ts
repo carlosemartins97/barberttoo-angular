@@ -48,7 +48,7 @@ import { DetailsAgendamentoComponent } from './pages/dashboard/details-agendamen
     AtendentesComponent,
     CardAtendentesComponent,
     CreateAtendenteComponent,
-    DetailsAgendamentoComponent
+    DetailsAgendamentoComponent,
   ],
   imports: [
     CommonModule,

@@ -47,7 +47,6 @@ export class CardAtendentesComponent implements OnInit {
     this.atendenteDeleted.emit(true);
     this.atendenteService.deleteAtendente(id).subscribe({
       next: res => {
-        console.log(res);
         this.atendenteDeleted.emit(false);
       }, error: error => {
         console.log(error);

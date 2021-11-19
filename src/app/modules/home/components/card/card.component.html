@@ -3,7 +3,7 @@
   <div class="card__header">
     <h2 class="card__header__title">{{agendamento.servico.nm_servico}}</h2>
 
-    <button class="btnTrash" type="button"><fa-icon [icon]="faTrash" class="icon" (click)="onDelete(+agendamento.id)"></fa-icon></button>
+    <button class="btnTrash" type="button" ><fa-icon [icon]="faTrash" class="icon" (click)="onDelete(+agendamento.id)" ></fa-icon></button>
   </div>
 
   <div class="card__body">
@@ -13,11 +13,12 @@
       </div>
       <div class="card__body__content__info">
         <p>Horário: <strong>{{horaFormatada}}</strong></p>
-        <p>Funcionário: <strong>{{agendamento.funcionario.nm_Funcionario}}</strong></p>
+        <p *ngIf="role === 'ROLE_CLIENTE'">Funcionário: <strong>{{agendamento.funcionario.nm_Funcionario}}</strong></p>
+        <p *ngIf="role !== 'ROLE_CLIENTE'">Cliente: <strong>{{agendamento.cliente.nm_Cliente}}</strong></p>
         <p>Celular: <strong>{{agendamento.funcionario.cd_Celular}}</strong></p>
       </div>
     </div>
-    <div class="card__body__details">
+    <div class="card__body__details" *ngIf="role === 'ROLE_CLIENTE'">
       <a routerLink="../agendamento/{{agendamento.id}}">Detalhes</a>
     </div>
   </div>
