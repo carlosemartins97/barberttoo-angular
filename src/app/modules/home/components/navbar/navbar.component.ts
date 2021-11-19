@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faClipboardList, faUsers, faWrench } from '@fortawesome/free-solid-svg-icons';
+import { faClipboardList, faNewspaper, faUsers, faWrench } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { ServicesService } from 'src/app/core/services/services.service';
 
@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   faClipboardList = faClipboardList;
   faWrench = faWrench;
   faUsers = faUsers;
+  faNewspaper = faNewspaper;
 
   userName: string;
   id: number;

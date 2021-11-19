@@ -11,6 +11,7 @@ import { CreateAgendamentoComponent } from './pages/dashboard/create-agendamento
 import { AtendentesComponent } from './pages/atendentes/atendentes.component';
 import { CreateAtendenteComponent } from './pages/atendentes/create-atendente/create-atendente.component';
 import { DetailsAgendamentoComponent } from './pages/dashboard/details-agendamento/details-agendamento.component';
+import { SobreComponent } from './pages/sobre/sobre.component';
 
 const appRoutes = [
   {path: '', component: HomeComponent, preMatch: 'full'},
@@ -25,6 +26,7 @@ const appRoutes = [
     {path: 'atendentes', component: AtendentesComponent},
     {path: 'atendente/edit/:id', component: CreateAtendenteComponent},
     {path: 'atendente/create', component: CreateAtendenteComponent},
+    {path: 'sobre', component: SobreComponent},
   ]},
 ]
 
