@@ -116,6 +116,61 @@ export class AuthService {
     }
   }
 
+  registerAtendente(payload: any, mode: string) {
+    const cpfFormatado = formatCpf(payload.cpf);
+    const telefoneFormatado = formatPhone(payload.phone);
+    const token = this.getUserInfo().token;
+
+    if(mode === 'atendente') {
+      const cepFormatado = formatCep(payload.cep!);
+      const newPayload = {
+        nm_Funcionario: payload.nome,
+        ds_Email: payload.email,
+        cd_Cpf: cpfFormatado ,
+        dt_BirthDate: payload.date ,
+        cd_Celular: telefoneFormatado ,
+        cd_Password: payload.password ,
+        ds_Endereco: payload.address,
+        ds_Cidade: payload.city,
+        sg_Uf: payload.uf,
+        cd_Cep: cepFormatado,
+        authority: payload.role
+      }
+      this.http.post<any>(`${this.api}/funcionario/create`, newPayload, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.route.navigate(['/app/atendentes'])
+        },
+        error: error => {
+          console.log(error);
+        }
+      })
+
+    } else {
+      const newPayload = {
+        nm_Cliente: payload.nome,
+        ds_Email: payload.email,
+        cd_Cpf: cpfFormatado ,
+        dt_BirthDate: payload.date ,
+        cd_Celular: telefoneFormatado ,
+        cd_Password: payload.password ,
+      }
+      this.http.post<any>(`${this.api}/cliente/create`, newPayload).subscribe({
+        next: (res) => {
+          alert('Cadastro realizado com sucesso!')
+          this.route.navigate(['/']);
+        },
+        error: error => {
+          console.log(error);
+        }
+      })
+    }
+  }
+
   logout() {
     sessionStorage.removeItem('jwtLogin');
     this.route.navigate(['/']);

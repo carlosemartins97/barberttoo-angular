@@ -40,6 +40,7 @@ export class AtendentesComponent implements OnInit {
       next: res => {
         this.atendentes = res;
         this.isLoading = false;
+        console.log(res);
       }, error: error => {
         console.log(error);
         this.isLoading = false;

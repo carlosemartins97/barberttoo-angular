@@ -96,7 +96,7 @@ export class RegisterFormComponent implements OnInit {
   id: number;
   role: string;
   isLoading = false;
-  editMode = 1;
+  editMode: number;
   clienteMode = false;
 
   estados: {sigla: string, nome: string}[] = [];
@@ -124,9 +124,9 @@ export class RegisterFormComponent implements OnInit {
           }
         })
   
-        this.activatedRoute.paramMap.subscribe(res => {
-          this.id = Number(res.get('id'));
-          if(this.id !== null) {
+        this.activatedRoute.params.subscribe(res => {
+          this.id = Number(res.id);
+          if(this.id) {
             this.isLoading = true;
             this.editMode = 2;
   
@@ -145,9 +145,12 @@ export class RegisterFormComponent implements OnInit {
                 this.registerAtendForm.controls.role.setValue(res.authority);
                 this.isLoading = false;
               }, error: error => {
+                
                 console.log('error');
               }
             })
+          } else {
+            this.editMode = 3;
           }
         })
       } else {
@@ -189,6 +192,10 @@ export class RegisterFormComponent implements OnInit {
         //ATUALIZAÇÃO DE DADOS DO ATENDENTE
         if(this.editMode === 2) {
           this.atendenteService.updateAtendente(this.registerAtendForm.value ,this.id);
+        } else if(this.editMode === 3) {
+          console.log(this.registerAtendForm.value);
+          this.auth.registerAtendente(this.registerAtendForm.value, this.mode);
+          
         }
       } else if (this.registerForm.valid){
         //ATUALIZAÇÃO DE DADOS DO CLIENTE

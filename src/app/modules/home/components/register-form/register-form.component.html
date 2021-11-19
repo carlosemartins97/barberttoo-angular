@@ -93,7 +93,7 @@
 
   <div class="register__submit">
     <button>
-      <span *ngIf="!loader && editMode === 1">Cadastrar</span> 
+      <span *ngIf="!loader && (editMode === 1 || editMode === 3)">Cadastrar</span> 
       <span *ngIf="!loader && editMode === 2">Atualizar informações</span> 
       <app-loader *ngIf="loader"></app-loader>
     </button>
