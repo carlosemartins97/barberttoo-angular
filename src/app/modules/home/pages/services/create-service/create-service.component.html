@@ -24,7 +24,8 @@
 
     <div class="createService__submit">
       <button>
-        <span *ngIf="!loader">Cadastrar</span> 
+        <span *ngIf="!loader && !editMode">Cadastrar</span> 
+        <span *ngIf="!loader && editMode">Atualizar</span> 
         <app-loader *ngIf="loader"></app-loader>
       </button>
     </div>

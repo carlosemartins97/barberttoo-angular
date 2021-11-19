@@ -15,7 +15,8 @@
     <p *ngIf="servicos.length === 0">Não existe nenhum serviço cadastrado no momento.</p>
     <app-card-service
       *ngFor="let serv of servicos; let i = index" 
-      [servico]="serv"></app-card-service>
+      [servico]="serv"
+      (deleteClicado)="onDeleteClicado()"></app-card-service>
   </div>
 
 </main>

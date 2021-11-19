@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { CrudSerivce, ServicesService } from 'src/app/core/services/services.service';
 
@@ -11,8 +11,10 @@ import { CrudSerivce, ServicesService } from 'src/app/core/services/services.ser
 export class CardServiceComponent implements OnInit {
 
   faTrash = faTrash;
+  faPen = faPen;
   
   @Input() servico: CrudSerivce;
+  @Output() deleteClicado = new EventEmitter<string>();
 
   link: string;
   role: string;
@@ -25,7 +27,14 @@ export class CardServiceComponent implements OnInit {
   }
 
   onDelete(id: number) {
-    this.service.deleteService(id); 
+    this.service.deleteService(id).subscribe({
+      next: res => {
+        this.deleteClicado.emit('clicado');
+      },
+      error: error => {
+        console.log(error);
+      }
+    })
   }
 
 }

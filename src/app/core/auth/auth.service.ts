@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { dataAtualFormatada, formatCep, formatCpf, formatPhone } from 'src/app/shared/helpers/format';
@@ -10,7 +10,7 @@ export interface Auth {
   profile: string;
   username: string;
   id: number;
-  name: string;
+  nome: string;
 }
 
 export interface RegisterInterface {
@@ -32,18 +32,25 @@ export interface RegisterInterface {
 })
 export class AuthService {
 
+  name = new EventEmitter<string>();
   api = 'https://sistema-barbertoo.herokuapp.com';
 
   constructor(
     private http: HttpClient, private route: Router
-  ) { }
+  ) { 
+  }
 
-  getUserInfo() {
+  getUserInfo(): Auth {
     var dataToken = sessionStorage.getItem('jwtLogin');
     return JSON.parse(dataToken!);
   }
 
-  login(payload: {email: string, password: string}, save: boolean) {
+  setUserInfo(item: Auth) {
+    this.name.emit(item.nome);
+    sessionStorage.setItem('jwtLogin', JSON.stringify(item));
+  }
+
+  login(payload: {email: string, password: string}) {
     const newPayload = {
       login: payload.email,
       password: payload.password
@@ -51,9 +58,6 @@ export class AuthService {
     this.http.post<Auth>(`${this.api}/login`, newPayload).subscribe({
       next: (res) => {
         sessionStorage.setItem('jwtLogin', JSON.stringify(res));
-        // if(save) {
-        //   this.cookieService.set('jwtLogin', JSON.stringify(res));
-        // }
         this.route.navigate(["/app"]);
       },
       error: error => {

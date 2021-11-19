@@ -39,4 +39,18 @@ export class ServicesComponent implements OnInit {
     })
   }
 
+  onDeleteClicado() {
+    this.isLoading = true;
+    this.services.getServices().subscribe({
+      next: res => {
+        this.servicos = res;
+        this.isLoading = false;
+      },
+      error: error => {
+        alert('Falha ao buscar servivços');
+        this.isLoading = false;
+      }
+    })
+  }
+
 }

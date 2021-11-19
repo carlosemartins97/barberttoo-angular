@@ -7,11 +7,14 @@
       <a routerLink="services"><fa-icon [icon]="faWrench" class="navIcon" aria-hidden="true"></fa-icon>Serviços</a>
     </li>
     <li>
-      <a routerLink="atendente"><fa-icon [icon]="faUsers" class="navIcon" aria-hidden="true"></fa-icon>Atendentes</a>
+      <a routerLink="atendentes"><fa-icon [icon]="faUsers" class="navIcon" aria-hidden="true"></fa-icon>Atendentes</a>
     </li>
   </ul>
   <div class="logout">
     <p class="logout__msg">Olá, <span class="logout__msg__name">{{userName}}</span>!</p>
-    <button type="button" (click)="onLogout()">Sair</button>
+    <div class="logout__btns">
+      <a routerLink="atendente/edit/{{id}}">Editar perfil</a>
+      <button type="button" (click)="onLogout()">Sair</button>
+    </div>
   </div>
 </nav>

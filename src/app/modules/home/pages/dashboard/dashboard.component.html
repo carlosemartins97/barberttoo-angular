@@ -15,6 +15,7 @@
     <p *ngIf="agendamentos.length === 0">Não existe nenhum agendamento realizado no momento.</p>
     <app-card 
       *ngFor="let agendamento of agendamentos; let i = index"
-      [agendamento]="agendamento"></app-card>
+      [agendamento]="agendamento"
+      (clicked)="onDeletedClicado()"></app-card>
   </div>
 </main>

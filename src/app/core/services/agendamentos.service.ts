@@ -79,16 +79,9 @@ export class AgendamentosService {
 
   deleteAgendamento(id: number) {
     const token = this.auth.getUserInfo().token;
-    this.http.delete<any>(`${this.api}/agendamento/${id}`, { 
+    return this.http.delete<any>(`${this.api}/agendamento/${id}`, { 
       headers: {
         Authorization: `Bearer ${token}`
-      }
-    }).subscribe({
-      next: res => {
-        console.log('deletado');
-      },
-      error: error => {
-        console.log(error);
       }
     })
   }

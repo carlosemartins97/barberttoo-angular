@@ -44,19 +44,19 @@
     <span *ngIf="(registerForm.controls.date.invalid && registerForm.controls.date.touched)" class="text-error">Insira sua data de nascimento!</span>
   </div>
 
-  <div class="register__cep formgroup" *ngIf="mode === 'atendente'">
+  <div class="register__cep formgroup" *ngIf="mode === 'atendente' && !clienteMode">
     <label class="register__cep__label" for="cep">CEP:</label>
     <input type="text" id="cep" name="cep" formControlName="cep" aria-label="CEP" mask="00000-000" (change)="onFillCEP()">
     <!-- <span *ngIf="(registerForm.controls.date.invalid && registerForm.controls.date.touched)" class="text-error">Insira sua data de nascimento!</span> -->
   </div>
 
-  <div class="register__city formgroup" *ngIf="mode === 'atendente'">
+  <div class="register__city formgroup" *ngIf="mode === 'atendente' && !clienteMode">
     <label class="register__city__label" for="city">Cidade:</label>
     <input type="text" id="city" name="city" formControlName="city" aria-label="Cidade">
     <!-- <span *ngIf="(registerForm.controls.date.invalid && registerForm.controls.date.touched)" class="text-error">Insira sua data de nascimento!</span> -->
   </div>
 
-  <div class="register__uf formgroup" *ngIf="mode === 'atendente'">
+  <div class="register__uf formgroup" *ngIf="mode === 'atendente' && !clienteMode">
     <label class="register__uf__label" for="uf">Estado:</label>
     <select name="uf" id="uf" formControlName="uf">
       <option *ngFor="let estado of estados; let i = index" value="{{estado.sigla}}">{{estado.nome}}</option>
@@ -64,13 +64,13 @@
     <!-- <span *ngIf="(registerForm.controls.date.invalid && registerForm.controls.date.touched)" class="text-error">Insira sua data de nascimento!</span> -->
   </div>
 
-  <div class="register__address formgroup" *ngIf="mode === 'atendente'">
+  <div class="register__address formgroup" *ngIf="mode === 'atendente' && !clienteMode">
     <label class="register__address__label" for="address">Endereço:</label>
     <input type="text" id="address" name="address" formControlName="address" aria-label="Endereço">
     <!-- <span *ngIf="(registerForm.controls.date.invalid && registerForm.controls.date.touched)" class="text-error">Insira sua data de nascimento!</span> -->
   </div>
 
-  <div class="register__role formgroup" *ngIf="mode === 'atendente'">
+  <div class="register__role formgroup" *ngIf="mode === 'atendente' && !clienteMode">
     <label class="register__role__label" for="role">Autorização:</label>
     <select name="role" id="role" formControlName="role">
       <option value="ROLE_ATEND">Atendente</option>
@@ -93,7 +93,8 @@
 
   <div class="register__submit">
     <button>
-      <span *ngIf="!loader">Cadastrar</span> 
+      <span *ngIf="!loader && editMode === 1">Cadastrar</span> 
+      <span *ngIf="!loader && editMode === 2">Atualizar informações</span> 
       <app-loader *ngIf="loader"></app-loader>
     </button>
   </div>

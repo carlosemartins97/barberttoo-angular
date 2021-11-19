@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
@@ -32,6 +32,15 @@ export class ServicesService {
     });
   }
 
+  getServiceById(id: number) {
+    const token = this.auth.getUserInfo().token;
+    return this.http.get<CrudSerivce>(`${this.api}/servico/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
   createService(payload: {name: string, descricao: string, price: string}) {
     const token = this.auth.getUserInfo().token;
     const newPayload = {
@@ -56,17 +65,31 @@ export class ServicesService {
 
   deleteService(id: number) {
     const token = this.auth.getUserInfo().token;
-    this.http.delete<any>(`${this.api}/servico/${id}`, { 
+    return this.http.delete<any>(`${this.api}/servico/${id}`, { 
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+  }
+
+  updateService(payload: {name: string, descricao: string, price: number}, id: number) {
+    const token = this.auth.getUserInfo().token;
+    const newPayload: CrudSerivce = {
+      id,
+      nm_servico: payload.name,
+      ds_servico: payload.descricao,
+      vl_preco: payload.price
+    }
+    this.http.put<any>(`${this.api}/servico`, newPayload ,{ 
       headers: {
         Authorization: `Bearer ${token}`
       }
     }).subscribe({
       next: res => {
-        console.log('deletado');
-      },
-      error: error => {
+        this.route.navigate(['/app/services']);
+      }, error: error => {
         console.log(error);
       }
-    })
+    });
   }
 }

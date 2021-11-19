@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { AtendenteService } from 'src/app/core/services/atendente.service';
 import { ServicesService } from 'src/app/core/services/services.service';
@@ -10,13 +10,13 @@ export interface AtendenteInterface {
   cd_Cpf: string;
   dt_BirthDate: string;
   cd_Celular: string;
-  cd_Password: string;
+  cd_Password?: string;
   ds_Endereco: string;
   ds_Cidade: string;
   sg_Uf: string;
   cd_Cep: string;
   authority: string;
-  id: string;
+  id: number;
 }
 
 @Component({
@@ -30,6 +30,7 @@ export class CardAtendentesComponent implements OnInit {
   @Output() atendenteDeleted = new EventEmitter<boolean>();
 
   faTrash = faTrash;
+  faPen = faPen;
 
   role: string;
 

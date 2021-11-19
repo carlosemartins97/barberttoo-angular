@@ -49,6 +49,14 @@ nav {
       background-color: $color-escuro;
       padding: 4px;
       border-radius: 4px;
+      margin-left: 8px;
+    }
+
+    a {
+      font-size: 14px;
+      background-color: $color-info;
+      padding: 4px;
+      border-radius: 4px;
     }
   }
 }

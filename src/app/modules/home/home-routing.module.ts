@@ -20,8 +20,10 @@ const appRoutes = [
     {path: 'agendamentos/create', component: CreateAgendamentoComponent},
     {path: 'agendamento/:id', component: DetailsAgendamentoComponent},
     {path: 'services', component: ServicesComponent},
+    {path: 'services/edit/:id', component: CreateServiceComponent},
     {path: 'services/create', component: CreateServiceComponent},
-    {path: 'atendente', component: AtendentesComponent},
+    {path: 'atendentes', component: AtendentesComponent},
+    {path: 'atendente/edit/:id', component: CreateAtendenteComponent},
     {path: 'atendente/create', component: CreateAtendenteComponent}
   ]},
 ]

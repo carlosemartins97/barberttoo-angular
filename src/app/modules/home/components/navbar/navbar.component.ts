@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
   faUsers = faUsers;
 
   userName: string;
+  id: number;
 
   constructor(private service: ServicesService, private auth: AuthService) { 
     var dataToken = sessionStorage.getItem('jwtLogin');
@@ -23,6 +24,11 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.id = this.auth.getUserInfo().id;
+    this.auth.name.subscribe(nome => {
+      console.log('emiti um valor');
+      this.userName = nome;
+    })
   }
 
   onLogout() {

@@ -27,4 +27,17 @@ export class DashboardComponent implements OnInit {
       }
     })
   }
+
+  onDeletedClicado() {
+    this.isLoading = true;
+    this.titleService.setTitle('Agendamentos | Barberttoo');
+    this.agendamento.getAgendamentos().subscribe({
+      next: res => {
+        this.agendamentos = res;
+        this.isLoading = false;
+      }, error: error => {
+        console.log(error);
+      }
+    })
+  }
 }

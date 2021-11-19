@@ -30,11 +30,7 @@ export class LoginComponent implements OnInit {;
   onSubmit() {
     if(this.loginForm.valid) {
       this.loader = true;
-      if(this.loginForm.controls.rememberData.value === true) {
-        this.auth.login(this.loginForm.value, true);
-      } else {
-        this.auth.login(this.loginForm.value, false);
-      }
+      this.auth.login(this.loginForm.value);
     }
   }
 

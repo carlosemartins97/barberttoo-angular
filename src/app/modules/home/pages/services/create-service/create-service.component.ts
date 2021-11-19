@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { ServicesService } from 'src/app/core/services/services.service';
 import { TitleService } from 'src/app/core/services/title.service';
@@ -30,18 +30,45 @@ export class CreateServiceComponent implements OnInit {
     private service: ServicesService, 
     private auth: AuthService, 
     private route: Router, 
-    private titleService: TitleService
+    private titleService: TitleService,
+    private activatedRoute: ActivatedRoute
   ) { }
+
+  id: string | null;
+  editMode = false;
+  isLoading = false;
 
   ngOnInit(): void {
     this.titleService.setTitle('Novo serviço | Barberttoo');
     this.auth.getUserInfo().profile !== 'ROLE_ADM' ? this.route.navigate(['/app/services']) : null;
+
+    this.activatedRoute.paramMap.subscribe(res => {
+      this.id = res.get('id');
+      if(this.id !== null) {
+        this.isLoading = true;
+        this.editMode = true;
+        this.service.getServiceById(+this.id).subscribe({
+          next: (res) => {
+            this.serviceForm.controls.name.setValue(res.nm_servico);
+            this.serviceForm.controls.descricao.setValue(res.ds_servico);
+            this.serviceForm.controls.price.setValue(res.vl_preco);
+          }
+        })
+      } else {
+        this.editMode = false;
+      }
+    })
+    
   }
 
   onSubmit() {
     if(this.serviceForm.valid) {
       this.loader = true;
-      this.service.createService(this.serviceForm.value);
+      if(this.editMode) {
+        this.service.updateService(this.serviceForm.value, Number(this.id));
+      } else {
+        this.service.createService(this.serviceForm.value);
+      }
     }
   }
 
