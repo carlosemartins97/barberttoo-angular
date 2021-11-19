@@ -12,7 +12,8 @@
   </div>
 
   <div class="container__cards" *ngIf="!isLoading">
-    <p *ngIf="agendamentos.length === 0">Não existe nenhum agendamento realizado no momento.</p>
+    <p *ngIf="agendamentos.length === 0 && !error">Não existe nenhum agendamento realizado no momento.</p>
+    <p *ngIf="agendamentos.length === 0 && error">Falha ao buscar agendamentos. Tente novamente mais tarde!</p>
     <app-card 
       *ngFor="let agendamento of agendamentos; let i = index"
       [agendamento]="agendamento"

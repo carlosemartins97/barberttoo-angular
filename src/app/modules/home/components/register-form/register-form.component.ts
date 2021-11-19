@@ -108,6 +108,7 @@ export class RegisterFormComponent implements OnInit {
     private clienteService: ClienteService) { }
 
   ngOnInit(): void {
+    this.editMode = 1;
     var dataToken = sessionStorage.getItem('jwtLogin');
     if(dataToken) {
 

@@ -18,6 +18,7 @@ export class ServicesComponent implements OnInit {
   isLoading = false;
   servicos: CrudSerivce[] = [];
   role: string;
+  error = false;
 
   admMode = false;
 
@@ -33,7 +34,7 @@ export class ServicesComponent implements OnInit {
         this.isLoading = false;
       },
       error: error => {
-        alert('Falha ao buscar servivços');
+        this.error = true;
         this.isLoading = false;
       }
     })
@@ -47,7 +48,7 @@ export class ServicesComponent implements OnInit {
         this.isLoading = false;
       },
       error: error => {
-        alert('Falha ao buscar servivços');
+        this.error = true;
         this.isLoading = false;
       }
     })

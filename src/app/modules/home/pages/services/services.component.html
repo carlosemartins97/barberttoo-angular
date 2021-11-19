@@ -12,7 +12,8 @@
   </div>
 
   <div class="services__body" *ngIf="!isLoading">
-    <p *ngIf="servicos.length === 0">Não existe nenhum serviço cadastrado no momento.</p>
+    <p *ngIf="servicos.length === 0 && !error">Não existe nenhum serviço cadastrado no momento.</p>
+    <p *ngIf="servicos.length === 0 && error">Falha ao buscar os serviços. Tente novamente mais tarde!</p>
     <app-card-service
       *ngFor="let serv of servicos; let i = index" 
       [servico]="serv"

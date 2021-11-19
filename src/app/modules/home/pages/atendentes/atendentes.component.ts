@@ -14,6 +14,7 @@ export class AtendentesComponent implements OnInit {
 
   isLoading = false;
   role: string;
+  error = false;
 
   atendentes: AtendenteInterface[] = [];
 
@@ -30,12 +31,14 @@ export class AtendentesComponent implements OnInit {
         this.isLoading = false;
       }, error: error => {
         console.log(error);
+        this.error = true;
         this.isLoading = false;
       }
     })
   }
 
   onClickedDelete() {
+    this.isLoading = true;
     this.atendenteService.getAtendentes().subscribe({
       next: res => {
         this.atendentes = res;

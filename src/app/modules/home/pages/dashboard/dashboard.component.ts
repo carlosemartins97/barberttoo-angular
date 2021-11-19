@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
 
   agendamentos: any[] = [];
   isLoading = false;
+  error = false;
 
   constructor(private titleService: TitleService, private agendamento: AgendamentosService) { }
 
@@ -23,7 +24,9 @@ export class DashboardComponent implements OnInit {
         this.agendamentos = res;
         this.isLoading = false;
       }, error: error => {
+        this.error = true;
         console.log(error);
+        this.isLoading = false;
       }
     })
   }
@@ -36,7 +39,9 @@ export class DashboardComponent implements OnInit {
         this.agendamentos = res;
         this.isLoading = false;
       }, error: error => {
+        this.error = true;
         console.log(error);
+        this.isLoading = false;
       }
     })
   }

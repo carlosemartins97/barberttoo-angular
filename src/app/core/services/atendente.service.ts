@@ -16,6 +16,7 @@ export class AtendenteService {
 
   getAtendentes() {
     const token = this.auth.getUserInfo().token;
+    console.log(token);
     const role = this.auth.getUserInfo().profile;
     if(role !== 'ROLE_ADM' && role !== 'ROLE_ATEND') {
       return this.http.get<AtendenteInterface[]>(`${this.api}/funcionario/lista`, {
