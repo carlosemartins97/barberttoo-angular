@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AtendenteInterface } from 'src/app/modules/home/components/card-atendentes/card-atendentes.component';
 import { AuthService } from '../auth/auth.service';
+import { Agendamento } from './agendamentos.service';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,15 @@ export class AtendenteService {
   getAtendenteById(id: number) {
     const token = this.auth.getUserInfo().token;
     return this.http.get<AtendenteInterface>(`${this.api}/funcionario/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+  }
+
+  getAgendamentosFuncionario(id: number) {
+    const token = this.auth.getUserInfo().token;
+    return this.http.get<Agendamento[]>(`${this.api}/agendamento/funcionario/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

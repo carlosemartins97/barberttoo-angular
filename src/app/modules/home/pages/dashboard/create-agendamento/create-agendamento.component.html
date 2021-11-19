@@ -14,7 +14,7 @@
 
     <div class="createAgendamento__funcionario formgroup">
       <label class="createAgendamento__funcionario__label" for="funcionario">Atendente:</label>
-      <select name="funcionario" id="funcionario" formControlName="funcionario">
+      <select name="funcionario" id="funcionario" formControlName="funcionario" (change)="getAtendenteHorarios()">
         <option *ngFor="let atend of atendentes; let i = index" value="{{atend.id}}">{{atend.nm_Funcionario}}</option>
       </select>
       <!-- <span *ngIf="(loginForm.controls.email.invalid && loginForm.controls.email.touched)" class="text-error">Insira um email válido!</span> -->
@@ -28,7 +28,9 @@
 
     <div class="createAgendamento__hora formgroup">
       <label class="createAgendamento__hora__label" for="hora">Horário:</label>
-      <input type="time" id="hora" name="hora" formControlName="hora" aria-label="Horário">
+      <select id="hora" name="hora" formControlName="hora" aria-label="Horário">
+        <option *ngFor="let horario of horarios" value="{{horario}}">{{horario}}</option>
+      </select>
       <!-- <span *ngIf="(loginForm.controls.email.invalid && loginForm.controls.email.touched)" class="text-error">Insira um email válido!</span> -->
     </div>
 
