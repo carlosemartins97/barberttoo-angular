@@ -22,7 +22,7 @@
 
     <div class="createAgendamento__date formgroup">
       <label class="createAgendamento__date__label" for="date">Data:</label>
-      <input type="date" id="date" name="date" formControlName="date" aria-label="Data">
+      <input type="date" id="date" name="date" formControlName="date" aria-label="Data" min="{{dataMinima}}" (change)="onDateChanged()">
       <!-- <span *ngIf="(loginForm.controls.email.invalid && loginForm.controls.email.touched)" class="text-error">Insira um email válido!</span> -->
     </div>
 

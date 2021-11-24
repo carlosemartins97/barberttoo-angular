@@ -34,6 +34,9 @@ export class CreateAgendamentoComponent implements OnInit {
   servicos: CrudSerivce[] = [];
   atendentes: AtendenteInterface[] = [];
   horarios: string[] = [];
+  dataMinima: string;
+  atendimentosDoFuncionario: {data: string, hora: string}[] = [];
+  atendimentosDoFuncionarioDoDia: {data: string, hora: string}[] = [];
 
   constructor(private service: ServicesService, 
     private atendente: AtendenteService, 
@@ -46,6 +49,9 @@ export class CreateAgendamentoComponent implements OnInit {
     this.service.getServices().subscribe(res => this.servicos = res);
     this.atendente.getAtendentes().subscribe(res => this.atendentes = res);
     this.agendamentoForm.controls.hora.disable();
+    this.agendamentoForm.controls.date.disable();
+    
+    this.dataMinima = this.getActualDate();
   }
 
   onSubmit() {
@@ -67,20 +73,41 @@ export class CreateAgendamentoComponent implements OnInit {
 
     this.atendente.getAgendamentosFuncionario(this.agendamentoForm.get('funcionario')?.value).subscribe({
       next: res => {
-        const resData = res.map(agendamento => {
-          return formateHourForAgendamentos(agendamento.dt_Agendamento);
+        const atendimentosDoFuncionario = res.map(agendamento => {
+          return {
+            hora: formateHourForAgendamentos(agendamento.dt_Agendamento),
+            data: new Date(agendamento.dt_Agendamento).getUTCFullYear()+'-'+(new Date(agendamento.dt_Agendamento).getUTCMonth()+1)+'-'+new Date(agendamento.dt_Agendamento).getUTCDate()
+          }
         })
-
-        const list = this.generateHorarioList();
-        const newList = list.filter( function( el ) {
-          return !resData.includes(el)
-        } );
-        this.agendamentoForm.controls.hora.enable();
-        this.horarios = newList;
+        this.atendimentosDoFuncionario = atendimentosDoFuncionario;
+        console.log(this.atendimentosDoFuncionario)
+        this.agendamentoForm.controls.date.enable();
       }, error: error => {
         console.log(error);
       }
     })
   }
 
+  onDateChanged() {
+    this.agendamentoForm.controls.hora.enable();
+    const data = this.agendamentoForm.get('date')?.value;
+    this.horarios = this.generateHorarioList();
+
+    let listaHoras: any[] = [];
+    const objDeComparacao = this.atendimentosDoFuncionario.filter(agendamento => {
+      if(data === agendamento.data) {
+        listaHoras.push(agendamento.hora)
+      }
+    })
+
+    const newList = this.generateHorarioList().filter(hora => {
+      return !listaHoras.includes(hora)
+    })
+    this.horarios = newList;
+  }
+
+  getActualDate() {
+    const data = new Date();
+    return `${data.getFullYear()}-${data.getMonth()+1}-${data.getDate()}`;
+  }
 }
