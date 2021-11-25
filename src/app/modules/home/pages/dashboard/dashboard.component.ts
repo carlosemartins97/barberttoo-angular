@@ -61,15 +61,33 @@ export class DashboardComponent implements OnInit {
   onDeletedClicado() {
     this.isLoading = true;
     //atualizar lista de agendamentos
-    this.agendamento.getAgendamentos().subscribe({
-      next: res => {
-        this.agendamentos = res;
-        this.isLoading = false;
-      }, error: error => {
-        this.error = true;
-        console.log(error);
-        this.isLoading = false;
-      }
-    })
+    if(this.role !== 'ROLE_CLIENTE') {
+      this.mode = 'atendente';
+      //fazer rota para listar agendamentos vigentes do funcionario
+      this.id = +this.auth.getUserInfo().id;
+      this.agendamento.getAgendamentoByAtendente(this.id).subscribe({
+        next: res => {
+          this.agendamentos = res;
+          this.isLoading = false;
+        }, error: error => {
+          this.isLoading = false;
+          console.log(error);
+        }
+      })
+      this.isLoading = false;
+    } else {
+      //rota para listar agendamentos ativos do cliente
+      this.mode = 'cliente';
+      this.agendamento.getAgendamentos().subscribe({
+        next: res => {
+          this.agendamentos = res;
+          this.isLoading = false;
+        }, error: error => {
+          this.error = true;
+          console.log(error);
+          this.isLoading = false;
+        }
+      })
+    }
   }
 }
