@@ -85,7 +85,7 @@
     <span *ngIf="(registerForm.controls.email.invalid && registerForm.controls.email.touched)" class="text-error">Digite um e-mail válido!</span>
   </div>
 
-  <div class="register__password formgroup">
+  <div class="register__password formgroup" *ngIf="editMode !== 2">
     <label class="register__password__label" for="password">Senha:</label>
     <input type="password" id="password" name="password" formControlName="password" aria-label="Senha" maxlength="30">
     <span *ngIf="(registerForm.controls.password.invalid && registerForm.controls.password.touched)" class="text-error">A senha deve ter entre 6 a 30 caractéres.</span>

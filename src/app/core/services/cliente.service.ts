@@ -52,7 +52,7 @@ export class ClienteService {
         nm_Cliente: payload.nome,
       }
 
-      this.http.put<Cliente>(`${this.api}/cliente`, newPayload, {
+      this.http.put<Cliente>(`${this.api}/cliente/update`, newPayload, {
         headers: {
           Authorization: `Bearer ${token}`
         }
