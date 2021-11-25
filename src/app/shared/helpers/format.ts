@@ -43,6 +43,8 @@ export function formateHourForAgendamentos(date: string) {
       return `0${hour}:${min}0`;
     }
     return `0${hour}:${min}`
+  } else if(min === 0) {
+    return `${hour}:${min}0`;
   }
   return `${hour}:${min}`;
 }
