@@ -81,6 +81,7 @@ export class AtendenteService {
       sg_Uf: payload.uf
     }
 
+
     this.http.put<AtendenteInterface>(`${this.api}/funcionario/`, newPayload ,{
       headers: {
         Authorization: `Bearer ${token}`
@@ -88,6 +89,15 @@ export class AtendenteService {
     }).subscribe({
       next: res => {
         this.route.navigate(['/app/atendentes']);
+
+        const userData = this.auth.getUserInfo();
+        const newUserData = {
+          ...userData,
+          nome: res.nm_Funcionario,
+          username: res.ds_Email
+        }
+        this.auth.setUserInfo(newUserData);
+        
       }, error: error => {
         console.log(error);
       }
