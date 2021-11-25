@@ -38,8 +38,11 @@ export function formateHourForAgendamentos(date: string) {
   let min = new Date(date).getMinutes();
   let hour = new Date(date).getHours();
 
-  if(min === 0) {
-    return `${hour}:${min}0`;
+  if(hour <= 9) {
+    if(min === 0) {
+      return `0${hour}:${min}0`;
+    }
+    return `0${hour}:${min}`
   }
   return `${hour}:${min}`;
 }

@@ -76,7 +76,7 @@ export class CreateAgendamentoComponent implements OnInit {
         const atendimentosDoFuncionario = res.map(agendamento => {
           return {
             hora: formateHourForAgendamentos(agendamento.dt_Agendamento),
-            data: new Date(agendamento.dt_Agendamento).getUTCFullYear()+'-'+(new Date(agendamento.dt_Agendamento).getUTCMonth()+1)+'-'+new Date(agendamento.dt_Agendamento).getUTCDate()
+            data: new Date(agendamento.dt_Agendamento).getFullYear()+'-'+(new Date(agendamento.dt_Agendamento).getMonth()+1)+'-'+new Date(agendamento.dt_Agendamento).getDate()
           }
         })
         this.atendimentosDoFuncionario = atendimentosDoFuncionario;
@@ -104,6 +104,7 @@ export class CreateAgendamentoComponent implements OnInit {
       return !listaHoras.includes(hora)
     })
     this.horarios = newList;
+    console.log(newList);
   }
 
   getActualDate() {
