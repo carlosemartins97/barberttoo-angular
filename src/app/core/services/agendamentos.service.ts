@@ -52,7 +52,7 @@ export class AgendamentosService {
 
   getAgendamentoById(id: number) {
     const token = this.auth.getUserInfo().token;
-    return this.http.get<Agendamento>(`${this.api}/agendamento/${id}`, {
+    return this.http.get<Agendamento>(`${this.api}/agendamento/parcial/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

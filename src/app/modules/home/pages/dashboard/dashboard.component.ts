@@ -62,13 +62,15 @@ export class DashboardComponent implements OnInit {
     this.isLoading = true;
     //atualizar lista de agendamentos
     if(this.role !== 'ROLE_CLIENTE') {
-      this.mode = 'atendente';
       //fazer rota para listar agendamentos vigentes do funcionario
       this.id = +this.auth.getUserInfo().id;
       this.agendamento.getAgendamentoByAtendente(this.id).subscribe({
         next: res => {
           this.agendamentos = res;
-          this.isLoading = false;
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 300)
+          console.log('entrei');
         }, error: error => {
           this.isLoading = false;
           console.log(error);
