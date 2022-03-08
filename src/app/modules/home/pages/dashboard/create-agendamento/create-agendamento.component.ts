@@ -51,7 +51,7 @@ export class CreateAgendamentoComponent implements OnInit {
     this.agendamentoForm.controls.hora.disable();
     this.agendamentoForm.controls.date.disable();
     
-    this.dataMinima = this.getActualDate();
+    this.dataMinima = this.formatDate(true, new Date());
   }
 
   onSubmit() {
@@ -90,7 +90,8 @@ export class CreateAgendamentoComponent implements OnInit {
 
   onDateChanged() {
     this.agendamentoForm.controls.hora.enable();
-    const data = this.agendamentoForm.get('date')?.value;
+    const data = this.formatDate(false, this.agendamentoForm.get('date')?.value);
+    console.log(data);
     this.horarios = this.generateHorarioList();
 
     let listaHoras: any[] = [];
@@ -107,8 +108,16 @@ export class CreateAgendamentoComponent implements OnInit {
     console.log(newList);
   }
 
-  getActualDate() {
-    const data = new Date();
-    return `${data.getFullYear()}-${data.getMonth()+1}-${data.getDate()}`;
+  formatDate(generateActualDate: boolean,data: any) {
+    if(generateActualDate) {
+      return `${data.getFullYear()}-${data.getMonth()+1 <= 9 ? '0'+(data.getMonth()+1) : data.getMonth()+1}-${data.getDate() <= 9 ? '0'+data.getDate() : data.getDate()}`;
+    } else {
+      const actualTime = new Date().getTime() + 86400;
+      const oldData = new Date(String(data));
+      const utc = actualTime + (oldData.getTimezoneOffset() * 60000);
+      const newData = new Date(utc + (3600000*-3));
+      return `${newData.getFullYear()}-${newData.getMonth()+1 }-${newData.getDate() <= 31 ? newData.getDate()+1 : newData.getDate()}`;
+    }
+
   }
 }
