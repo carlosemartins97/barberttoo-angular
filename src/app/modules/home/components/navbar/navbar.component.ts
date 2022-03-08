@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faClipboardList, faNewspaper, faUsers, faWrench } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faClipboardList, faNewspaper, faUsers, faWrench } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { ServicesService } from 'src/app/core/services/services.service';
 
@@ -14,9 +14,12 @@ export class NavbarComponent implements OnInit {
   faWrench = faWrench;
   faUsers = faUsers;
   faNewspaper = faNewspaper;
+  faBars = faBars;
 
   userName: string;
   id: number;
+  isMenuOpened: boolean = false;
+  openMenuClass = 'close';
 
   constructor(private service: ServicesService, private auth: AuthService) { 
     var dataToken = sessionStorage.getItem('jwtLogin');
@@ -33,6 +36,16 @@ export class NavbarComponent implements OnInit {
 
   onLogout() {
     this.auth.logout();
+  }
+
+  toggleMenu() {
+    if(this.isMenuOpened) {
+      this.isMenuOpened = false;
+      this.openMenuClass = 'close';
+    } else {
+      this.isMenuOpened = true;
+      this.openMenuClass = 'open';
+    }
   }
 
 }

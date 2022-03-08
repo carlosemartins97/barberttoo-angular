@@ -1,19 +1,29 @@
 <nav>
-  <ul>
-    <li>
-      <a routerLink="agendamentos"><fa-icon [icon]="faClipboardList" class="navIcon" aria-hidden="true"></fa-icon>agendamentos</a>
-    </li>
-    <li>
-      <a routerLink="services"><fa-icon [icon]="faWrench" class="navIcon" aria-hidden="true"></fa-icon>Serviços</a>
-    </li>
-    <li>
-      <a routerLink="atendentes"><fa-icon [icon]="faUsers" class="navIcon" aria-hidden="true"></fa-icon>Atendentes</a>
-    </li>
-    <li>
-      <a routerLink="sobre"><fa-icon [icon]="faNewspaper" class="navIcon" aria-hidden="true"></fa-icon>Sobre</a>
-    </li>
-  </ul>
-  <div class="logout">
+  <div class="teste {{openMenuClass}}">
+    <button class="menu-hamburguer" (click)="toggleMenu()"><fa-icon [icon]="faBars"></fa-icon></button>
+    <ul class="{{openMenuClass}}">
+      <li>
+        <a routerLink="agendamentos"><fa-icon [icon]="faClipboardList" class="navIcon" aria-hidden="true"></fa-icon>agendamentos</a>
+      </li>
+      <li>
+        <a routerLink="services"><fa-icon [icon]="faWrench" class="navIcon" aria-hidden="true"></fa-icon>Serviços</a>
+      </li>
+      <li>
+        <a routerLink="atendentes"><fa-icon [icon]="faUsers" class="navIcon" aria-hidden="true"></fa-icon>Atendentes</a>
+      </li>
+      <li>
+        <a routerLink="sobre"><fa-icon [icon]="faNewspaper" class="navIcon" aria-hidden="true"></fa-icon>Sobre</a>
+      </li>
+    </ul>
+    <div class="logout insideMenu {{openMenuClass}}">
+      <p class="logout__msg">Olá, <span class="logout__msg__name">{{userName}}</span>!</p>
+      <div class="logout__btns">
+        <a routerLink="atendente/edit/{{id}}">Editar perfil</a>
+        <button type="button" (click)="onLogout()">Sair</button>
+      </div>
+    </div>
+  </div>
+  <div class="logout {{openMenuClass}}">
     <p class="logout__msg">Olá, <span class="logout__msg__name">{{userName}}</span>!</p>
     <div class="logout__btns">
       <a routerLink="atendente/edit/{{id}}">Editar perfil</a>
