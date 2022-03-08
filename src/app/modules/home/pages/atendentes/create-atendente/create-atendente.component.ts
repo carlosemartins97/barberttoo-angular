@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TitleService } from 'src/app/core/services/title.service';
 
 @Component({
@@ -8,10 +9,21 @@ import { TitleService } from 'src/app/core/services/title.service';
 })
 export class CreateAtendenteComponent implements OnInit {
 
-  constructor(private titleService: TitleService) { }
+  title: string = '';
+
+  constructor(
+    private titleService: TitleService,
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Novo atendente | Barberttoo');
+    const lastRouteIndex = this.route.snapshot.url.length - 1;
+    const lastRoute = this.route.snapshot.url[lastRouteIndex].path;
+    if(lastRoute === 'create') {
+      this.title = 'Novo atendente'
+    } else {
+      this.title = 'Atualizar dados'
+    }
   }
 
 }

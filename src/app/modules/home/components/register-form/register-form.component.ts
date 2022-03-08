@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { AtendenteService } from 'src/app/core/services/atendente.service';
 import { ClienteService } from 'src/app/core/services/cliente.service';
+import { TitleService } from 'src/app/core/services/title.service';
 
 
 @Component({
@@ -105,6 +106,7 @@ export class RegisterFormComponent implements OnInit {
     private http: HttpClient, 
     private activatedRoute: ActivatedRoute,
     private atendenteService: AtendenteService,
+    private titleService: TitleService,
     private clienteService: ClienteService) { }
 
   ngOnInit(): void {
@@ -182,8 +184,11 @@ export class RegisterFormComponent implements OnInit {
         });
       }
     }
-
-    
+    if(this.mode === 'atendente') {
+      this.titleService.setTitle('Atualizar dados | Barberttoo');
+    }  else if (this.mode === 'cliente') {
+      this.titleService.setTitle('Cadastro | Barberttoo');
+    }
   }
 
   onSubmit() {
@@ -214,6 +219,7 @@ export class RegisterFormComponent implements OnInit {
       }
     } else {
       //REGISTRO DO CLIENTE FORA DA APLICAÇÃO
+      this.titleService.setTitle('Cadastro | Barberttoo');
       if(this.registerForm.valid) {
         this.loader = true;
         this.auth.register(this.registerForm.value, this.mode);

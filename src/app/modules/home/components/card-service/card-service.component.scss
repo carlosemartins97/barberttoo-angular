@@ -9,6 +9,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between ;
+
+  &__title__btns {
+    display: flex;
+  }
   
   &__header {
     position: relative;
@@ -26,9 +30,6 @@
 
     .admBtn {
       display: flex;
-      position: absolute;
-      right: 0;
-      top: 0;
       a,button {
         background: rgb(172, 61, 61);
         border-radius: 50%;

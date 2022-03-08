@@ -1,7 +1,9 @@
 <div class="card">
   <div class="card__header">
-    <button type="button" class="btnTrash" *ngIf="role === 'ROLE_ADM'"><fa-icon [icon]="faTrash" class="icon" (click)="onDelete(+atendente.id)"></fa-icon></button>
-    <h2 class="card__header__name">{{atendente.nm_Funcionario}}</h2>
+    <div class="card__title__btns">
+      <h2 class="card__header__name">{{atendente.nm_Funcionario}}</h2>
+      <button type="button" class="btnTrash" *ngIf="role === 'ROLE_ADM'"><fa-icon [icon]="faTrash" class="icon" (click)="onDelete(+atendente.id)"></fa-icon></button>
+    </div>
     <p class="card__header__email"><strong>Email:</strong> {{atendente.ds_Email}}</p>
     <p class="card__header__phone"><strong>Celular:</strong> {{atendente.cd_Celular}}</p>
     <p class="card__header__role" *ngIf="role === 'ROLE_ADM'"><strong>Cargo:</strong> {{roleExibition}}</p>

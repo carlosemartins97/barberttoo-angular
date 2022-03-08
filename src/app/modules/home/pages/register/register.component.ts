@@ -14,7 +14,6 @@ export class RegisterComponent implements OnInit {
   constructor(private titleService: TitleService) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Cadastro | Barberttoo')
   }
 
 }

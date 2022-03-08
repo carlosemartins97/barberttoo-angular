@@ -14,10 +14,12 @@
 
   &__header {
     position: relative;
+    display: flex;
     &__title {
       position: relative;
       margin-bottom: 10px;
       padding-bottom: 5px;
+      width: 100%;
       &::after {
         content: '';
         width: 50px;
@@ -29,9 +31,6 @@
       }
     }
     .btnTrash {
-      position: absolute;
-      right: 0;
-      top: 0;
       background: rgb(172, 61, 61);
       border-radius: 50%;
       padding: 3px;

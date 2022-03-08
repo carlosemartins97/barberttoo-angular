@@ -1,12 +1,14 @@
 <div class="card">
   <div class="card__header">
-    <div class="admBtn" *ngIf="role === 'ROLE_ADM'">
-      <div>
-        <a type="button" class="btnUpdate" routerLink="edit/{{servico.id}}" ><fa-icon [icon]="faPen" class="icon"></fa-icon></a>
+    <div class="card__title__btns">
+      <h2 class="card__header__title">{{servico.nm_servico}}</h2>
+      <div class="admBtn" *ngIf="role === 'ROLE_ADM'">
+        <div>
+          <a type="button" class="btnUpdate" routerLink="edit/{{servico.id}}" ><fa-icon [icon]="faPen" class="icon"></fa-icon></a>
+        </div>
+        <button type="button" class="btnTrash" (click)="onDelete(servico.id)"><fa-icon [icon]="faTrash" class="icon"></fa-icon></button>
       </div>
-      <button type="button" class="btnTrash" (click)="onDelete(servico.id)"><fa-icon [icon]="faTrash" class="icon"></fa-icon></button>
     </div>
-    <h2 class="card__header__title">{{servico.nm_servico}}</h2>
     <p class="card__header__subtitle">{{servico.ds_servico}}</p>
     <span class="card__header__price">R$ {{servico.vl_preco}}</span>
   </div>
